@@ -21,8 +21,8 @@ const {
     <meta property="og:locale" content="fr_FR" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{title}</title>
-    <!-- Netlify Identity Widget (requis pour Decap CMS) -->
-    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+    <!-- Netlify Identity Widget — is:inline pour placement synchrone dans le <head> -->
+    <script is:inline src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -250,12 +250,12 @@ const {
         }, { passive: true });
       }
     </script>
-    <!-- Netlify Identity : redirige vers /admin après connexion -->
-    <script>
+    <!-- Netlify Identity : intercepte les tokens d'invitation et redirige vers /admin après login -->
+    <script is:inline>
       if (window.netlifyIdentity) {
-        window.netlifyIdentity.on('init', (user: unknown) => {
+        window.netlifyIdentity.on('init', function(user) {
           if (!user) {
-            window.netlifyIdentity.on('login', () => {
+            window.netlifyIdentity.on('login', function() {
               document.location.href = '/admin/';
             });
           }
