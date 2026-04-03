@@ -1,24 +1,17 @@
 ---
-title: "Cavalcade de Carnaval"
-date_debut: 2026-04-12T14:00:00+01:00
-date_fin: 2026-04-12T18:00:00+01:00
-lieu: "Place de la Mairie, Kienheim"
-description: "La grande cavalcade de carnaval revient ! Chars décorés, groupes costumés et musiques traditionnelles défileront dans les rues du village. Entrée libre, buvette et restauration sur place."
+title: Marché de printemps
+date_debut: 2026-05-01T10:00:00+02:00
+date_fin: 2026-05-01T21:00:00+02:00
+lieu: 5 Rue de l'Eglise 67270 Kienheim France
+description: L'Association Socio-Culturelle et Sportive de Durningen-Kienheim
+  organise sa traditionnelle journée tartes flambées à la Ferme Knab à Kienheim
+  en parallèle du Marché de Printemps et du terroir annuel organisé par la
+  commune. Les enfants pourront proposer un prénom (choisi par tirage au sort)
+  pour un petit veau dans la ferme.
 ---
-
-La **Cavalcade de Carnaval de Kienheim** est l'un des rendez-vous les plus attendus du printemps !
+Le **Marché du printemps et du terroir** est l'un des rendez-vous les plus attendus du printemps !
 
 ## Programme
 
-- **14h00** : Rassemblement place de la Mairie
-- **14h30** : Départ du défilé (parcours dans les rues du village)
-- **16h00** : Retour place de la Mairie, distribution de bonbons aux enfants
-- **16h30 – 18h00** : Animation musicale, buvette et restauration
-
-## Participation
-
-Toutes les associations, familles et groupes d'amis sont invités à participer au défilé avec leurs chars et costumes. Inscription souhaitée (mais non obligatoire) auprès de la mairie avant le 5 avril.
-
-## En cas de mauvais temps
-
-En cas de pluie, la cavalcade est maintenue sauf conditions extrêmes. Un message sera publié sur ce site la veille si annulation.
+* **10h00** : Ouverture du marché
+* **11h30** : Ouverture de la restauration
