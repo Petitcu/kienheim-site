@@ -1,0 +1,111 @@
+---
+const maire = {
+  nom: 'Olivier COURSON',
+  fonction: 'Maire',
+  detail: 'Ingénieur de recherches · 56 ans',
+  initiales: 'OC',
+  mandat: 'Liste « Kienheim, Terroir et Avenir » — Élu en 2026',
+};
+
+const conseillers = [
+  { nom: 'Lucienne FACHINGER',   fonction: '1ère Adjoint — Patrimoine',    initiales: 'LF', bg: '#EEF2F7', color: '#2B4C6F' },
+  { nom: 'Alain KNAB',           fonction: '2ème Adjoint — Agriculture',   initiales: 'AK', bg: '#EEF5EE', color: '#3D5E39' },
+  { nom: 'Sandrine RAFAEL',      fonction: '3ème Adjoint — Commerce',      initiales: 'SR', bg: '#F7EEF2', color: '#6B3050' },
+  { nom: 'Thierry KISTNER',      fonction: 'Conseiller — Finances',        initiales: 'TK', bg: '#EEF5EE', color: '#2D5428' },
+  { nom: 'Géraldine POSTIF',     fonction: 'Conseillère — Artisanat',      initiales: 'GP', bg: '#F7F3EE', color: '#6B4A1E' },
+  { nom: 'Denis RAMSPACHER',     fonction: 'Conseiller — Agriculture',     initiales: 'DR', bg: '#EEF5F2', color: '#1E5040' },
+  { nom: 'Karine PETITCUENOT',   fonction: 'Conseillère — Numérique',      initiales: 'KP', bg: '#EEF4F7', color: '#1E4A6B' },
+  { nom: 'Olivier FOUCHER',      fonction: 'Conseiller — Finances',        initiales: 'OF', bg: '#F2EEF7', color: '#4A2E6B' },
+  { nom: 'Frédérique GONCALVES', fonction: 'Conseillère — Budget',         initiales: 'FG', bg: '#F7EEEE', color: '#6B2B2B' },
+  { nom: 'Marc SAUER',           fonction: 'Conseiller — Voirie',          initiales: 'MS', bg: '#F7F0EE', color: '#6B3A1E' },
+  { nom: 'Eva REIMINGER',        fonction: 'Conseillère — Environnement',  initiales: 'ER', bg: '#EEF6F5', color: '#1E5050' },
+  { nom: 'Raymond URRU',         fonction: 'Conseiller — Technique',       initiales: 'RU', bg: '#F0EEF7', color: '#3A2E6B' },
+  { nom: 'Camille MOREA',        fonction: 'Conseillère — Alimentation',   initiales: 'CM', bg: '#F7EEF5', color: '#6B2058' },
+  { nom: 'Ludovic DANGEL',       fonction: 'Conseiller — Développement',   initiales: 'LD', bg: '#F0F0EE', color: '#404030' },
+];
+---
+
+<section class="py-20 px-4 sm:px-6 lg:px-8" style="background: var(--c-bg);" aria-labelledby="conseil-heading">
+  <div class="max-w-7xl mx-auto">
+
+    <!-- Header -->
+    <div class="text-center mb-14 reveal">
+      <div class="flex items-center justify-center gap-4 mb-3">
+        <div class="section-line"></div>
+        <span class="section-tag">Gouvernance</span>
+        <div class="section-line"></div>
+      </div>
+      <h2 id="conseil-heading" class="text-3xl sm:text-4xl font-black section-title">
+        Conseil Municipal
+      </h2>
+      <p class="mt-3 max-w-xl mx-auto text-sm" style="color: var(--c-muted);">
+        Mandat 2026–2032 · Liste « Kienheim, Terroir et Avenir » · 15 élus au service de la commune
+      </p>
+    </div>
+
+    <!-- Maire (carte mise en avant) -->
+    <div class="flex justify-center mb-12 reveal">
+      <article
+        class="relative bg-white dark:bg-kienheim-dark-surface rounded-3xl shadow-xl p-8 flex flex-col sm:flex-row items-center gap-6 max-w-md w-full"
+        style="border: 2px solid var(--c-primary);"
+        aria-labelledby="maire-name"
+      >
+        <!-- Badge -->
+        <div class="absolute -top-3.5 left-1/2 -translate-x-1/2">
+          <span class="px-4 py-1 rounded-full text-xs font-bold text-white" style="background: var(--c-primary);">
+            Maire
+          </span>
+        </div>
+
+        <!-- Avatar -->
+        <div
+          class="flex-shrink-0 w-24 h-24 rounded-full flex items-center justify-center shadow-lg"
+          style="background: linear-gradient(135deg, #2B4C6F 0%, #5B8AB5 100%);"
+          aria-hidden="true"
+        >
+          <svg class="w-14 h-14 text-white" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/>
+          </svg>
+        </div>
+
+        <!-- Infos -->
+        <div class="text-center sm:text-left">
+          <h3 id="maire-name" class="text-xl font-black" style="color: var(--c-fg);">{maire.nom}</h3>
+          <p class="font-semibold mt-0.5" style="color: var(--c-primary);">{maire.fonction}</p>
+          <p class="text-xs mt-0.5" style="color: var(--c-muted);">{maire.detail}</p>
+          <p class="text-xs mt-1" style="color: var(--c-muted);">{maire.mandat}</p>
+          <a href="mailto:maire@kienheim.fr" class="btn-accent mt-3 inline-flex">
+            <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+            </svg>
+            Contacter
+          </a>
+        </div>
+      </article>
+    </div>
+
+    <!-- Grille conseillers -->
+    <ul class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-7 gap-4" role="list">
+      {conseillers.map((c, i) => (
+        <li>
+          <article
+            class={`reveal reveal-delay-${(i % 4) + 1} rounded-2xl p-4 text-center shadow-sm hover:-translate-y-1 hover:shadow-md transition-all duration-200 bg-white dark:bg-kienheim-dark-surface`}
+            style="border: 1px solid var(--c-border);"
+            aria-labelledby={`conseiller-${i}`}
+          >
+            <div
+              class="w-12 h-12 rounded-full flex items-center justify-center font-bold text-sm mx-auto mb-2"
+              style={`background: ${c.bg}; color: ${c.color};`}
+              aria-hidden="true"
+            >
+              {c.initiales}
+            </div>
+            <h3 id={`conseiller-${i}`} class="text-xs font-bold leading-tight" style="color: var(--c-fg);">{c.nom}</h3>
+            <p class="text-xs mt-0.5 leading-tight" style="color: var(--c-muted);">{c.fonction}</p>
+          </article>
+        </li>
+      ))}
+    </ul>
+
+  </div>
+</section>

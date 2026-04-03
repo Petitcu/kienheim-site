@@ -1,0 +1,120 @@
+---
+const services = [
+  {
+    id: 'dechets',
+    title: 'Déchets & Tri',
+    desc: 'Collecte des ordures ménagères chaque lundi matin. Déchetterie à Truchtersheim, ouverte mer., sam. et dim.',
+    detail: 'Calendrier de collecte disponible en mairie et sur le site de la ComCom Kochersberg.',
+    iconPath: `<path stroke-linecap="round" stroke-linejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />`,
+    iconBg: '#5C7A56',
+    cardBg: '#F0F5F0',
+    cardBgDark: '#1A2820',
+  },
+  {
+    id: 'eau',
+    title: 'Eau & Assainissement',
+    desc: "Service géré par le SDEA Alsace. En cas de fuite ou coupure, contacter le numéro d'urgence 24h/24.",
+    detail: "Urgence eau : 0 800 800 888 (numéro gratuit). Qualité de l'eau consultable en mairie.",
+    iconPath: `<path stroke-linecap="round" stroke-linejoin="round" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />`,
+    iconBg: '#2B4C6F',
+    cardBg: '#EFF4F8',
+    cardBgDark: '#182030',
+  },
+  {
+    id: 'urbanisme',
+    title: 'Urbanisme',
+    desc: "Le Plan Local d'Urbanisme (PLU) est consultable en mairie. Dépôt de permis de construire et déclarations préalables.",
+    detail: 'Instruction des dossiers par le service mutualisé de la Communauté de Communes du Kochersberg.',
+    iconPath: `<path stroke-linecap="round" stroke-linejoin="round" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />`,
+    iconBg: '#6B4A1E',
+    cardBg: '#F8F3EC',
+    cardBgDark: '#281E10',
+  },
+  {
+    id: 'demarches',
+    title: 'Démarches administratives',
+    desc: "Carte nationale d'identité, passeport, état civil, actes de naissance et de mariage, recensement citoyen.",
+    detail: 'Sur rendez-vous uniquement. Documents à fournir disponibles sur service-public.fr.',
+    iconPath: `<path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />`,
+    iconBg: '#C9A84C',
+    cardBg: '#F8F5EC',
+    cardBgDark: '#282210',
+  },
+  {
+    id: 'mediatheque',
+    title: 'Médiathèque & Culture',
+    desc: 'Point relais de la médiathèque intercommunale du Kochersberg. Retrait et dépôt de livres, CD et DVD sans se déplacer à Truchtersheim.',
+    detail: 'Conférences et actions culturelles organisées régulièrement. Aide à la pratique numérique pour tous les âges.',
+    iconPath: `<path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />`,
+    iconBg: '#4A2E6B',
+    cardBg: '#F2EEF8',
+    cardBgDark: '#1C1428',
+  },
+];
+---
+
+<section id="vie-pratique" class="py-20 px-4 sm:px-6 lg:px-8" style="background: var(--c-bg);" aria-labelledby="viepratique-heading">
+  <div class="max-w-7xl mx-auto">
+
+    <!-- Header -->
+    <div class="mb-12 reveal">
+      <div class="flex items-center gap-4 mb-3">
+        <div class="section-line"></div>
+        <span class="section-tag">Services</span>
+      </div>
+      <h2 id="viepratique-heading" class="text-3xl sm:text-4xl font-black section-title">
+        Vie pratique
+      </h2>
+      <p class="mt-2 max-w-xl text-sm" style="color: var(--c-muted);">
+        Tout ce dont vous avez besoin au quotidien, en un seul endroit.
+      </p>
+    </div>
+
+    <!-- Cards grid -->
+    <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-5" role="list">
+      {services.map((s, i) => (
+        <li>
+          <article
+            class={`reveal reveal-delay-${i + 1} rounded-2xl p-6 hover:-translate-y-1 hover:shadow-lg transition-all duration-200 h-full flex flex-col`}
+            style={`background: ${s.cardBg}; border: 1px solid var(--c-border);`}
+            aria-labelledby={`service-${s.id}`}
+          >
+            <!-- Icon -->
+            <div
+              class="w-12 h-12 rounded-xl flex items-center justify-center mb-4 text-white flex-shrink-0"
+              style={`background: ${s.iconBg};`}
+              aria-hidden="true"
+            >
+              <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                <Fragment set:html={s.iconPath} />
+              </svg>
+            </div>
+
+            <!-- Content -->
+            <h3 id={`service-${s.id}`} class="text-base font-bold mb-2" style="color: var(--c-primary);">
+              {s.title}
+            </h3>
+            <p class="text-sm leading-relaxed flex-1" style="color: var(--c-muted);">
+              {s.desc}
+            </p>
+            <p class="text-xs mt-2 italic leading-relaxed" style="color: var(--c-muted); opacity: 0.75;">
+              {s.detail}
+            </p>
+
+            <!-- CTA -->
+            <a
+              href="#"
+              class="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold transition-colors link-primary"
+            >
+              En savoir plus
+              <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </a>
+          </article>
+        </li>
+      ))}
+    </ul>
+
+  </div>
+</section>

@@ -1,0 +1,106 @@
+---
+const blocs = [
+  {
+    id: 'histoire',
+    tag: 'Histoire',
+    title: 'Un village aux racines médiévales',
+    text: "Mentionné dès le XIIe siècle dans les chroniques abbatiales, Kienheim puise son nom dans l'ancien haut-allemand. Village agricole par excellence, il a traversé les siècles en conservant son identité alsacienne profonde — entre cultures vivrières, vignes et forêts de chênes qui lui ont donné son nom (« Kien » : pin sylvestre, « heim » : foyer).",
+    extra: "Les archives de la commune remontent à 1347, témoignant d'une vie communautaire organisée bien avant la Révolution française.",
+    gradient: 'from-amber-700 via-orange-600 to-yellow-600',
+    icon: `<svg class="w-12 h-12 text-white/60" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" /></svg>`,
+    imageRight: false,
+  },
+  {
+    id: 'patrimoine',
+    tag: 'Patrimoine',
+    title: 'Colombages, église et cours fleuries',
+    text: "L'église Saint-Pierre-et-Paul, dont le clocher roman domine le village, est le joyau architectural de Kienheim. Classée monument historique local, elle abrite des vitraux du XVIIe siècle et un orgue restauré en 2018. Les maisons à colombages, aux volets de bois peints, témoignent de l'architecture rurale alsacienne traditionnelle.",
+    extra: "Chaque été, le concours des maisons fleuries attire de nombreux visiteurs venus admirer les géraniums débordant des fenêtres à meneaux.",
+    gradient: 'from-stone-600 via-stone-500 to-amber-600',
+    icon: `<svg class="w-12 h-12 text-white/60" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-2 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" /></svg>`,
+    imageRight: true,
+  },
+  {
+    id: 'nature',
+    tag: 'Nature & Kochersberg',
+    title: "Le grenier de l'Alsace",
+    text: "Le Kochersberg, ce plateau limoneux entre Strasbourg et Saverne, est surnommé le « grenier de l'Alsace » pour la richesse de ses terres agricoles. Autour de Kienheim s'étendent des champs de blé, de colza et de maïs à perte de vue, ponctuées de haies et de vergers conservatoires plantés d'espèces locales anciennes.",
+    extra: "Le chemin de promenade du Geisberg, en cours de valorisation, offre une balade bucolique au coeur du terroir. Sentiers balisés, milans royaux et vergers conservatoires vous attendent.",
+    gradient: 'from-green-800 via-emerald-700 to-teal-600',
+    icon: `<svg class="w-12 h-12 text-white/60" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" /></svg>`,
+    imageRight: false,
+  },
+];
+---
+
+<section id="decouvrir" class="py-20 px-4 sm:px-6 lg:px-8" style="background: var(--c-bg);" aria-labelledby="decouvrir-heading">
+  <div class="max-w-7xl mx-auto">
+
+    <!-- Header -->
+    <div class="text-center mb-16 reveal">
+      <div class="flex items-center justify-center gap-4 mb-3">
+        <div class="section-line"></div>
+        <span class="section-tag">Le Village</span>
+        <div class="section-line"></div>
+      </div>
+      <h2 id="decouvrir-heading" class="text-3xl sm:text-4xl font-black section-title">
+        Découvrir Kienheim
+      </h2>
+      <p class="mt-3 max-w-xl mx-auto text-sm" style="color: var(--c-muted);">
+        Un village vivant, ancré dans son terroir alsacien, entre histoire et nature préservée.
+      </p>
+    </div>
+
+    <!-- Blocs -->
+    <div class="space-y-20">
+      {blocs.map((bloc, index) => (
+        <div
+          class={`flex flex-col ${bloc.imageRight ? 'lg:flex-row-reverse' : 'lg:flex-row'} gap-8 lg:gap-16 items-center reveal`}
+          style={`transition-delay: ${index * 0.1}s;`}
+        >
+          <!-- Image placeholder avec parallaxe -->
+          <div class="w-full lg:w-1/2 overflow-hidden rounded-2xl shadow-xl aspect-[4/3] relative group">
+            <div
+              class={`w-full h-full bg-gradient-to-br ${bloc.gradient} parallax-img flex flex-col items-center justify-center gap-4`}
+            >
+              <Fragment set:html={bloc.icon} />
+              <span class="text-white/40 text-sm font-medium tracking-widest uppercase">Photo à venir</span>
+            </div>
+            <div class="absolute top-4 left-4">
+              <span class="badge-secondary backdrop-blur-sm">{bloc.tag}</span>
+            </div>
+          </div>
+
+          <!-- Texte -->
+          <div class="w-full lg:w-1/2 space-y-4">
+            <div class="flex items-center gap-3">
+              <div class="section-line"></div>
+              <span class="section-tag">{bloc.tag}</span>
+            </div>
+            <h3 class="text-2xl sm:text-3xl font-black leading-tight" style="color: var(--c-primary);">
+              {bloc.title}
+            </h3>
+            <p class="leading-relaxed text-base" style="color: var(--c-muted);">
+              {bloc.text}
+            </p>
+            <blockquote
+              class="pl-4 text-sm italic"
+              style="border-left: 2px solid var(--c-accent); color: var(--c-muted);"
+            >
+              {bloc.extra}
+            </blockquote>
+            <a
+              href="#"
+              class="link-primary inline-flex items-center gap-2 text-sm hover:gap-3 transition-all duration-200 mt-2"
+            >
+              En savoir plus
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </a>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,147 @@
+---
+const navItems = [
+  { label: 'Accueil',         href: '#accueil' },
+  { label: 'La Mairie',       href: '#mairie' },
+  { label: 'Vie quotidienne', href: '#vie-pratique' },
+  { label: 'Événements',      href: '#evenements' },
+  { label: 'Le Village',      href: '#decouvrir' },
+];
+---
+
+<nav
+  id="navbar"
+  class="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
+  style="background: #2B4C6F;"
+  aria-label="Navigation principale"
+>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16">
+
+      <!-- Logo + nom -->
+      <a href="#accueil" class="flex items-center gap-3 group" aria-label="Kienheim — Accueil">
+        <img
+          src="/assets/images/blason.png"
+          alt="Blason de Kienheim"
+          class="h-9 w-auto drop-shadow-md transition-transform duration-300 group-hover:scale-105"
+        />
+        <span
+          class="font-black text-lg tracking-widest uppercase drop-shadow-sm transition-colors duration-300 text-white"
+          id="navbar-brand"
+        >
+          KIENHEIM
+        </span>
+      </a>
+
+      <!-- Desktop nav -->
+      <ul class="hidden md:flex items-center gap-1" role="list">
+        {navItems.map((item) => (
+          <li>
+            <a
+              href={item.href}
+              class="px-4 py-2 text-sm font-medium text-white/90 hover:text-white rounded-lg transition-all duration-200 hover:bg-white/15 focus-visible:bg-white/15"
+            >
+              {item.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+
+      <!-- Mobile hamburger -->
+      <button
+        id="hamburger"
+        aria-label="Ouvrir le menu"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+        class="md:hidden flex flex-col justify-center items-center w-10 h-10 gap-1.5 rounded-lg hover:bg-white/15 transition"
+      >
+        <span class="ham-line w-6 h-0.5 bg-white rounded transition-all duration-300"></span>
+        <span class="ham-line w-6 h-0.5 bg-white rounded transition-all duration-300"></span>
+        <span class="ham-line w-6 h-0.5 bg-white rounded transition-all duration-300"></span>
+      </button>
+    </div>
+
+    <!-- Mobile menu -->
+    <div id="mobile-menu" role="menu" aria-labelledby="hamburger">
+      <ul class="flex flex-col gap-1 pb-4" role="list">
+        {navItems.map((item) => (
+          <li>
+            <a
+              href={item.href}
+              role="menuitem"
+              class="block px-4 py-3 text-sm font-medium text-white/90 hover:text-white rounded-lg hover:bg-white/15 transition"
+            >
+              {item.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<script>
+  const navbar    = document.getElementById('navbar')!;
+  const brand     = document.getElementById('navbar-brand')!;
+  const hamburger = document.getElementById('hamburger')!;
+  const mobileMenu = document.getElementById('mobile-menu')!;
+  const hamLines  = navbar.querySelectorAll('.ham-line');
+
+  const PRIMARY   = '#2B4C6F';
+  const PRIMARY_SCROLLED_LIGHT = 'rgba(248, 245, 240, 0.94)';
+  const PRIMARY_SCROLLED_DARK  = 'rgba(21, 27, 35, 0.94)';
+
+  function isDark() {
+    return document.documentElement.classList.contains('dark');
+  }
+
+  function updateNavbar() {
+    const scrolled = window.scrollY > 50;
+    navbar.classList.toggle('navbar-scrolled', scrolled);
+
+    const desktopLinks = navbar.querySelectorAll<HTMLAnchorElement>('ul a');
+    desktopLinks.forEach((link) => {
+      link.style.color = scrolled
+        ? (isDark() ? '#E8E4DF' : '#1A1A1A')
+        : 'rgba(255,255,255,0.9)';
+    });
+
+    if (scrolled) {
+      brand.style.color = isDark() ? '#E8E4DF' : '#2B4C6F';
+      navbar.style.background = '';  // handled by .navbar-scrolled
+    } else {
+      brand.style.color = '#fff';
+      navbar.style.background = PRIMARY;
+    }
+  }
+
+  window.addEventListener('scroll', updateNavbar, { passive: true });
+  updateNavbar();
+
+  // Mobile menu toggle
+  let menuOpen = false;
+  hamburger.addEventListener('click', () => {
+    menuOpen = !menuOpen;
+    hamburger.setAttribute('aria-expanded', String(menuOpen));
+    mobileMenu.classList.toggle('open', menuOpen);
+    if (menuOpen) {
+      (hamLines[0] as HTMLElement).style.transform = 'rotate(45deg) translate(5px, 5px)';
+      (hamLines[1] as HTMLElement).style.opacity = '0';
+      (hamLines[2] as HTMLElement).style.transform = 'rotate(-45deg) translate(5px, -5px)';
+    } else {
+      (hamLines[0] as HTMLElement).style.transform = '';
+      (hamLines[1] as HTMLElement).style.opacity = '';
+      (hamLines[2] as HTMLElement).style.transform = '';
+    }
+  });
+
+  mobileMenu.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', () => {
+      menuOpen = false;
+      hamburger.setAttribute('aria-expanded', 'false');
+      mobileMenu.classList.remove('open');
+      (hamLines[0] as HTMLElement).style.transform = '';
+      (hamLines[1] as HTMLElement).style.opacity = '';
+      (hamLines[2] as HTMLElement).style.transform = '';
+    });
+  });
+</script>
