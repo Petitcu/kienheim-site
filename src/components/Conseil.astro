@@ -21,21 +21,22 @@ function initiales(nom: string): string {
 }
 
 // Palette de couleurs de fond pour les avatars (cycle)
+// bg/color = light mode, bgDark/colorDark = dark mode
 const palettes = [
-  { bg: '#EEF2F7', color: '#2B4C6F' },
-  { bg: '#EEF5EE', color: '#3D5E39' },
-  { bg: '#F7EEF2', color: '#6B3050' },
-  { bg: '#EEF5EE', color: '#2D5428' },
-  { bg: '#F7F3EE', color: '#6B4A1E' },
-  { bg: '#EEF5F2', color: '#1E5040' },
-  { bg: '#EEF4F7', color: '#1E4A6B' },
-  { bg: '#F2EEF7', color: '#4A2E6B' },
-  { bg: '#F7EEEE', color: '#6B2B2B' },
-  { bg: '#F7F0EE', color: '#6B3A1E' },
-  { bg: '#EEF6F5', color: '#1E5050' },
-  { bg: '#F0EEF7', color: '#3A2E6B' },
-  { bg: '#F7EEF5', color: '#6B2058' },
-  { bg: '#F0F0EE', color: '#404030' },
+  { bg: '#EEF2F7', color: '#2B4C6F', bgDark: '#1A2535', colorDark: '#7AAAD4' },
+  { bg: '#EEF5EE', color: '#3D5E39', bgDark: '#182518', colorDark: '#7FAB78' },
+  { bg: '#F7EEF2', color: '#6B3050', bgDark: '#2A1520', colorDark: '#C4849E' },
+  { bg: '#EEF5EE', color: '#2D5428', bgDark: '#182218', colorDark: '#78A870' },
+  { bg: '#F7F3EE', color: '#6B4A1E', bgDark: '#281E10', colorDark: '#C49A60' },
+  { bg: '#EEF5F2', color: '#1E5040', bgDark: '#102018', colorDark: '#60A890' },
+  { bg: '#EEF4F7', color: '#1E4A6B', bgDark: '#101E2A', colorDark: '#60A0C8' },
+  { bg: '#F2EEF7', color: '#4A2E6B', bgDark: '#1E1228', colorDark: '#9878C8' },
+  { bg: '#F7EEEE', color: '#6B2B2B', bgDark: '#281010', colorDark: '#C87878' },
+  { bg: '#F7F0EE', color: '#6B3A1E', bgDark: '#281610', colorDark: '#C49070' },
+  { bg: '#EEF6F5', color: '#1E5050', bgDark: '#102020', colorDark: '#60A8A8' },
+  { bg: '#F0EEF7', color: '#3A2E6B', bgDark: '#181228', colorDark: '#8878C8' },
+  { bg: '#F7EEF5', color: '#6B2058', bgDark: '#280F22', colorDark: '#C870B0' },
+  { bg: '#F0F0EE', color: '#404030', bgDark: '#1E1E18', colorDark: '#A8A880' },
 ];
 ---
 
@@ -134,8 +135,10 @@ const palettes = [
                     />
                   ) : (
                     <div
-                      class="w-12 h-12 rounded-full flex items-center justify-center font-bold text-sm mx-auto mb-2"
+                      class="avatar-initiales w-12 h-12 rounded-full flex items-center justify-center font-bold text-sm mx-auto mb-2"
                       style={`background: ${p.bg}; color: ${p.color};`}
+                      data-bg-dark={p.bgDark}
+                      data-color-dark={p.colorDark}
                       aria-hidden="true"
                     >
                       {initiales(elu.data.nom)}
@@ -178,8 +181,10 @@ const palettes = [
                     />
                   ) : (
                     <div
-                      class="w-12 h-12 rounded-full flex items-center justify-center font-bold text-sm mx-auto mb-2"
+                      class="avatar-initiales w-12 h-12 rounded-full flex items-center justify-center font-bold text-sm mx-auto mb-2"
                       style={`background: ${p.bg}; color: ${p.color};`}
+                      data-bg-dark={p.bgDark}
+                      data-color-dark={p.colorDark}
                       aria-hidden="true"
                     >
                       {initiales(elu.data.nom)}
@@ -200,3 +205,29 @@ const palettes = [
 
   </div>
 </section>
+
+<script>
+  function applyAvatarDark() {
+    const isDark = document.documentElement.classList.contains('dark') ||
+      window.matchMedia('(prefers-color-scheme: dark)').matches;
+    document.querySelectorAll<HTMLElement>('.avatar-initiales').forEach((el) => {
+      if (isDark) {
+        el.style.background = el.dataset.bgDark || el.style.background;
+        el.style.color = el.dataset.colorDark || el.style.color;
+      } else {
+        el.style.background = el.dataset.bgLight || el.style.background;
+        el.style.color = el.dataset.colorLight || el.style.color;
+      }
+    });
+  }
+  // Mémorise les valeurs light au premier chargement
+  document.querySelectorAll<HTMLElement>('.avatar-initiales').forEach((el) => {
+    el.dataset.bgLight = el.style.background;
+    el.dataset.colorLight = el.style.color;
+  });
+  applyAvatarDark();
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', applyAvatarDark);
+  new MutationObserver(applyAvatarDark).observe(document.documentElement, {
+    attributes: true, attributeFilter: ['class'],
+  });
+</script>

@@ -75,8 +75,9 @@ const services = [
       {services.map((s, i) => (
         <li>
           <article
-            class={`reveal reveal-delay-${i + 1} rounded-2xl p-6 hover:-translate-y-1 hover:shadow-lg transition-all duration-200 h-full flex flex-col`}
+            class={`reveal reveal-delay-${i + 1} rounded-2xl p-6 hover:-translate-y-1 hover:shadow-lg transition-all duration-200 h-full flex flex-col service-card`}
             style={`background: ${s.cardBg}; border: 1px solid var(--c-border);`}
+            data-bg-dark={s.cardBgDark}
             aria-labelledby={`service-${s.id}`}
           >
             <!-- Icon -->
@@ -118,3 +119,30 @@ const services = [
 
   </div>
 </section>
+
+<script>
+  function applyServiceCardDark() {
+    const isDark = document.documentElement.classList.contains('dark') ||
+      window.matchMedia('(prefers-color-scheme: dark)').matches;
+    document.querySelectorAll<HTMLElement>('.service-card').forEach((card) => {
+      if (isDark && card.dataset.bgDark) {
+        card.style.background = card.dataset.bgDark;
+      } else {
+        // Réinitialise — la valeur inline initiale vient du SSR, on relit depuis le dataset
+        // On se base sur le contraste : on supprime le style pour laisser le CSS de base
+        // (pas de dataset pour light, on force via attribut data-bg-light)
+        card.style.background = card.dataset.bgLight || card.style.background;
+      }
+    });
+  }
+  // Stocke la valeur light au chargement
+  document.querySelectorAll<HTMLElement>('.service-card').forEach((card) => {
+    card.dataset.bgLight = card.style.background;
+  });
+  applyServiceCardDark();
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', applyServiceCardDark);
+  // Observer la classe .dark sur <html> (toggle manuel)
+  new MutationObserver(applyServiceCardDark).observe(document.documentElement, {
+    attributes: true, attributeFilter: ['class'],
+  });
+</script>

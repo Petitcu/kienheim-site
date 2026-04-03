@@ -44,13 +44,29 @@ const {
         scroll-behavior: smooth;
       }
 
-      /* Dark mode tokens (on .dark class + media fallback) */
-      .dark, @media (prefers-color-scheme: dark) {
-        --c-primary:   #5B8AB5;
-        --c-bg:        #151B23;
-        --c-fg:        #E8E4DF;
-        --c-muted:     #9CA3AF;
-        --c-border:    #2A3040;
+      /* Dark mode tokens — classe .dark (toggle JS) */
+      .dark {
+        --c-primary:       #5B8AB5;
+        --c-secondary:     #7FAB78;
+        --c-accent:        #D4AE5A;
+        --c-accent-hover:  #C49A40;
+        --c-bg:            #151B23;
+        --c-fg:            #E8E4DF;
+        --c-muted:         #9CA3AF;
+        --c-border:        #2A3040;
+      }
+      /* Dark mode tokens — media query système (fallback sans JS) */
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --c-primary:       #5B8AB5;
+          --c-secondary:     #7FAB78;
+          --c-accent:        #D4AE5A;
+          --c-accent-hover:  #C49A40;
+          --c-bg:            #151B23;
+          --c-fg:            #E8E4DF;
+          --c-muted:         #9CA3AF;
+          --c-border:        #2A3040;
+        }
       }
 
       *,
@@ -143,6 +159,14 @@ const {
       .bento-card:hover {
         transform: translateY(-4px);
         box-shadow: 0 12px 32px rgba(201, 168, 76, 0.18);
+      }
+      .dark .bento-card:hover {
+        box-shadow: 0 12px 32px rgba(0, 0, 0, 0.40);
+      }
+      @media (prefers-color-scheme: dark) {
+        .bento-card:hover {
+          box-shadow: 0 12px 32px rgba(0, 0, 0, 0.40);
+        }
       }
 
       /* ── Mobile menu ────────────────────────────────────────── */
