@@ -3,9 +3,6 @@ backend:
   name: git-gateway
   branch: main
 
-# Mode éditorial : brouillons → en révision → publié
-publish_mode: editorial_workflow
-
 # ── Médias ───────────────────────────────────────────────────────────
 media_folder: public/images/uploads
 public_folder: /images/uploads
