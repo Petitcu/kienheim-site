@@ -1,0 +1,185 @@
+---
+export interface DocItem {
+  title: string;
+  date: Date;
+  url?: string;        // lien PDF
+  categorie?: string;
+  slug?: string;       // lien vers page détail
+  collection?: string; // pour construire le href
+}
+
+export interface Props {
+  items: DocItem[];
+  id: string;          // unique pour éviter collisions JS
+  showSearch?: boolean;
+}
+
+const { items, id, showSearch = true } = Astro.props;
+
+const fmtDate = (d: Date) =>
+  d.toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' });
+
+// Années uniques pour le filtre
+const years = [...new Set(items.map((it) => it.date.getFullYear()))].sort((a, b) => b - a);
+
+// Sérialise pour JS côté client
+const itemsJson = JSON.stringify(
+  items.map((it) => ({
+    title: it.title,
+    date: it.date.toISOString(),
+    url: it.url ?? null,
+    categorie: it.categorie ?? null,
+    slug: it.slug ?? null,
+    collection: it.collection ?? null,
+    year: it.date.getFullYear(),
+  }))
+);
+---
+
+<div class="document-list-wrapper" data-id={id}>
+  <!-- Filtres -->
+  <div class="flex flex-wrap gap-3 mb-5">
+    {showSearch && (
+      <div class="flex-1 min-w-[200px]">
+        <label for={`search-${id}`} class="sr-only">Rechercher</label>
+        <div class="relative">
+          <svg class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 pointer-events-none" style="color: var(--c-muted);" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+          </svg>
+          <input
+            id={`search-${id}`}
+            type="search"
+            placeholder="Rechercher…"
+            class="doc-search w-full pl-9 pr-4 py-2 text-sm rounded-xl border transition focus:outline-none"
+            style="background: var(--c-bg); border-color: var(--c-border); color: var(--c-fg);"
+            autocomplete="off"
+          />
+        </div>
+      </div>
+    )}
+
+    {years.length > 1 && (
+      <div>
+        <label for={`year-${id}`} class="sr-only">Filtrer par année</label>
+        <select
+          id={`year-${id}`}
+          class="doc-year py-2 px-3 text-sm rounded-xl border appearance-none cursor-pointer transition focus:outline-none"
+          style="background: var(--c-bg); border-color: var(--c-border); color: var(--c-fg);"
+        >
+          <option value="">Toutes les années</option>
+          {years.map((y) => <option value={y}>{y}</option>)}
+        </select>
+      </div>
+    )}
+  </div>
+
+  <!-- Liste -->
+  <ul class="doc-list space-y-2" role="list" aria-live="polite" aria-label="Documents">
+    {items.map((item) => (
+      <li
+        class="doc-item flex items-start sm:items-center gap-3 rounded-xl p-3 transition-colors hover:bg-[var(--c-border)]"
+        data-year={item.date.getFullYear()}
+        data-title={item.title.toLowerCase()}
+      >
+        <!-- Icône type -->
+        <div
+          class="flex-shrink-0 w-8 h-8 rounded-lg flex items-center justify-center"
+          style="background: var(--c-primary); color: #fff;"
+          aria-hidden="true"
+        >
+          {item.url ? (
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+            </svg>
+          ) : (
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+            </svg>
+          )}
+        </div>
+
+        <!-- Infos -->
+        <div class="flex-1 min-w-0">
+          <div class="flex flex-wrap items-center gap-2">
+            {item.categorie && (
+              <span
+                class="text-xs font-semibold px-2 py-0.5 rounded-full flex-shrink-0"
+                style="background: var(--c-secondary); color: #fff;"
+              >
+                {item.categorie}
+              </span>
+            )}
+            <time
+              class="text-xs flex-shrink-0"
+              style="color: var(--c-muted);"
+              datetime={item.date.toISOString()}
+            >
+              {fmtDate(item.date)}
+            </time>
+          </div>
+          <p class="text-sm font-medium mt-0.5 leading-snug" style="color: var(--c-fg);">
+            {item.slug && item.collection ? (
+              <a
+                href={`/${item.collection}/${item.slug}`}
+                class="hover:underline link-primary"
+              >
+                {item.title}
+              </a>
+            ) : item.title}
+          </p>
+        </div>
+
+        <!-- Bouton PDF -->
+        {item.url && (
+          <a
+            href={item.url}
+            class="flex-shrink-0 btn-accent text-xs"
+            target="_blank"
+            rel="noopener"
+            aria-label={`Télécharger le PDF : ${item.title}`}
+          >
+            <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+            </svg>
+            PDF
+          </a>
+        )}
+      </li>
+    ))}
+  </ul>
+
+  <p class="doc-empty hidden mt-4 text-sm text-center py-6" style="color: var(--c-muted);">
+    Aucun document trouvé.
+  </p>
+</div>
+
+<script define:vars={{ id }}>
+  (function () {
+    const wrapper = document.querySelector(`.document-list-wrapper[data-id="${id}"]`);
+    if (!wrapper) return;
+
+    const searchInput = wrapper.querySelector('.doc-search');
+    const yearSelect = wrapper.querySelector('.doc-year');
+    const items = wrapper.querySelectorAll('.doc-item');
+    const emptyMsg = wrapper.querySelector('.doc-empty');
+
+    function filter() {
+      const q = searchInput ? searchInput.value.toLowerCase().trim() : '';
+      const y = yearSelect ? yearSelect.value : '';
+      let visible = 0;
+
+      items.forEach((item) => {
+        const titleMatch = !q || (item.dataset.title || '').includes(q);
+        const yearMatch = !y || item.dataset.year === y;
+        const show = titleMatch && yearMatch;
+        item.style.display = show ? '' : 'none';
+        if (show) visible++;
+      });
+
+      if (emptyMsg) emptyMsg.classList.toggle('hidden', visible > 0);
+    }
+
+    if (searchInput) searchInput.addEventListener('input', filter);
+    if (yearSelect) yearSelect.addEventListener('change', filter);
+  })();
+</script>

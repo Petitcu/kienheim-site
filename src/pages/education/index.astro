@@ -1,0 +1,192 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/Navbar.astro';
+import Footer from '../../components/Footer.astro';
+import DocumentList from '../../components/DocumentList.astro';
+import InfoBlocks from '../../components/InfoBlocks.astro';
+
+// Articles catégorie Éducation
+const allActualites = await getCollection('actualites');
+const educationArticles = allActualites
+  .filter((a) => ['Éducation', 'Jeunesse', 'Education'].includes(a.data.categorie ?? ''))
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+
+// Conseil : comptes-rendus réunions (filtrés si possible)
+const allConseil = await getCollection('conseil');
+const conseilEdu = allConseil
+  .filter((c) => c.data.title.toLowerCase().includes('école') || c.data.title.toLowerCase().includes('educati'))
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+
+const docItems = educationArticles.map((a) => ({
+  title: a.data.title,
+  date: a.data.date,
+  url: undefined,
+  categorie: a.data.categorie ?? 'Éducation',
+  slug: a.slug,
+  collection: 'actualites',
+}));
+
+const liens = [
+  {
+    icon: 'M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253',
+    title: 'École primaire intercommunale',
+    description: "Site de la Communauté de Communes du Kochersberg-Ackerland.",
+    href: 'https://www.cc-kochersberg.fr/',
+    external: true,
+  },
+  {
+    icon: 'M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9',
+    title: 'Académie de Strasbourg',
+    description: "Calendrier scolaire, inscriptions, informations officielles.",
+    href: 'https://www.ac-strasbourg.fr/',
+    external: true,
+  },
+  {
+    icon: 'M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4',
+    title: 'Inscriptions périscolaires',
+    description: "Accueil périscolaire et cantine. Renseignements en mairie.",
+    href: 'mailto:contact@kienheim.fr',
+    external: false,
+  },
+  {
+    icon: 'M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z',
+    title: 'Centre de loisirs (ALSH)',
+    description: "Accueil de loisirs sans hébergement. Géré par la ComCom.",
+    href: 'https://www.cc-kochersberg.fr/',
+    external: true,
+  },
+];
+---
+
+<Layout title="Éducation — Kienheim" description="École intercommunale, périscolaire, jeunesse et comptes-rendus des réunions à Kienheim.">
+  <Navbar />
+  <main id="main-content" class="pt-16">
+
+    <!-- Hero -->
+    <div class="py-12 px-4 sm:px-6 lg:px-8" style="background: var(--c-primary);">
+      <div class="max-w-7xl mx-auto">
+        <div class="flex items-center gap-3 mb-2">
+          <a href="/" class="text-white/70 hover:text-white text-sm transition-colors">Accueil</a>
+          <span class="text-white/40">/</span>
+          <span class="text-white text-sm font-medium">Éducation</span>
+        </div>
+        <h1 class="text-3xl sm:text-4xl font-black text-white">Éducation</h1>
+        <p class="mt-2 text-white/80 max-w-xl">
+          École intercommunale, périscolaire, jeunesse et ressources éducatives.
+        </p>
+      </div>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-16">
+
+      <!-- ── École intercommunale ── -->
+      <section aria-labelledby="ecole-heading">
+        <div class="mb-8 reveal">
+          <div class="flex items-center gap-4 mb-3">
+            <div class="section-line"></div>
+            <span class="section-tag">Enseignement</span>
+          </div>
+          <h2 id="ecole-heading" class="text-2xl sm:text-3xl font-black section-title">
+            École intercommunale
+          </h2>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 reveal">
+          <!-- Infos école -->
+          <div
+            class="rounded-2xl p-6 sm:p-8"
+            style="background: color-mix(in srgb, var(--c-secondary) 10%, transparent); border: 1px solid var(--c-border);"
+          >
+            <h3 class="text-lg font-bold mb-4" style="color: var(--c-fg);">
+              École primaire de Kienheim-Durningen
+            </h3>
+            <dl class="space-y-3 text-sm">
+              <div>
+                <dt class="font-semibold" style="color: var(--c-fg);">Adresse</dt>
+                <dd style="color: var(--c-muted);">Rue de l'École, 67270 Kienheim</dd>
+              </div>
+              <div>
+                <dt class="font-semibold" style="color: var(--c-fg);">Horaires</dt>
+                <dd style="color: var(--c-muted);">Lundi, mardi, jeudi, vendredi : 8h30 – 11h30 / 13h30 – 16h30</dd>
+              </div>
+              <div>
+                <dt class="font-semibold" style="color: var(--c-fg);">Périscolaire</dt>
+                <dd style="color: var(--c-muted);">Accueil dès 7h30 et jusqu'à 18h30 (cantine incluse)</dd>
+              </div>
+              <div>
+                <dt class="font-semibold" style="color: var(--c-fg);">Inscriptions</dt>
+                <dd style="color: var(--c-muted);">En mairie sur rendez-vous — livret de famille et justificatif de domicile requis</dd>
+              </div>
+              <div>
+                <dt class="font-semibold" style="color: var(--c-fg);">Contact mairie</dt>
+                <dd>
+                  <a href="tel:+33388000000" class="link-primary font-mono">03 88 XX XX XX</a>
+                </dd>
+              </div>
+            </dl>
+          </div>
+
+          <!-- Infos complémentaires -->
+          <div
+            class="rounded-2xl p-6 sm:p-8"
+            style="background: color-mix(in srgb, var(--c-accent) 10%, transparent); border: 1px solid var(--c-border);"
+          >
+            <h3 class="text-lg font-bold mb-4" style="color: var(--c-fg);">
+              Accueil de loisirs & périscolaire
+            </h3>
+            <p class="text-sm leading-relaxed mb-4" style="color: var(--c-muted);">
+              L'accueil de loisirs sans hébergement (ALSH) est géré par la Communauté de Communes du Kochersberg-Ackerland. Il accueille les enfants les mercredis et pendant les vacances scolaires.
+            </p>
+            <p class="text-sm leading-relaxed mb-4" style="color: var(--c-muted);">
+              La cantine scolaire propose des repas équilibrés chaque midi. Les inscriptions se font via le portail en ligne de la ComCom ou en mairie.
+            </p>
+            <a
+              href="https://www.cc-kochersberg.fr/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn-accent inline-flex"
+            >
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+              </svg>
+              Site de la ComCom
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── Liens utiles ── -->
+      <section aria-labelledby="liens-heading">
+        <div class="mb-8 reveal">
+          <div class="flex items-center gap-4 mb-3">
+            <div class="section-line"></div>
+            <span class="section-tag">Ressources</span>
+          </div>
+          <h2 id="liens-heading" class="text-2xl sm:text-3xl font-black section-title">
+            Liens utiles
+          </h2>
+        </div>
+        <InfoBlocks blocks={liens} columns={4} />
+      </section>
+
+      <!-- ── Actualités Éducation ── -->
+      {docItems.length > 0 && (
+        <section aria-labelledby="actu-edu-heading" class="pb-8">
+          <div class="mb-8 reveal">
+            <div class="flex items-center gap-4 mb-3">
+              <div class="section-line"></div>
+              <span class="section-tag">Actualités</span>
+            </div>
+            <h2 id="actu-edu-heading" class="text-2xl sm:text-3xl font-black section-title">
+              Actualités éducation & jeunesse
+            </h2>
+          </div>
+          <DocumentList items={docItems} id="edu-list" />
+        </section>
+      )}
+
+    </div>
+  </main>
+  <Footer />
+</Layout>

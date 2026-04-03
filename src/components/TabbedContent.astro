@@ -1,0 +1,130 @@
+---
+// TabbedContent : le composant gère la tablist sticky.
+// Le contenu de chaque panel est passé via le slot par défaut,
+// enveloppé dans des divs avec data-panel="<id>".
+// Usage côté page :
+//   <TabbedContent tabs={tabs} id="vivre">
+//     <div data-panel="agenda">...</div>
+//     <div data-panel="flash">...</div>
+//   </TabbedContent>
+
+export interface Tab {
+  id: string;
+  label: string;
+  icon?: string; // SVG path d="..."
+}
+
+export interface Props {
+  tabs: Tab[];
+  defaultTab?: string;
+  id: string;
+}
+
+const { tabs, defaultTab, id } = Astro.props;
+const activeTab = defaultTab ?? tabs[0]?.id;
+---
+
+<div class="tabbed-content" data-tabgroup={id} data-default={activeTab}>
+  <!-- Tab list: sticky under navbar -->
+  <div
+    class="sticky top-16 z-30 -mx-4 sm:-mx-6 lg:-mx-8 px-4 sm:px-6 lg:px-8 overflow-x-auto"
+    style="background: var(--c-bg); border-bottom: 1px solid var(--c-border);"
+  >
+    <div
+      role="tablist"
+      aria-label="Rubriques"
+      class="flex items-end gap-1 min-w-max"
+    >
+      {tabs.map((tab) => (
+        <button
+          role="tab"
+          id={`tab-${id}-${tab.id}`}
+          aria-controls={`panel-${id}-${tab.id}`}
+          aria-selected={tab.id === activeTab ? 'true' : 'false'}
+          tabindex={tab.id === activeTab ? 0 : -1}
+          class="tab-btn flex items-center gap-2 px-4 py-3 text-sm font-semibold whitespace-nowrap border-b-2 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--c-primary)]"
+          style={tab.id === activeTab
+            ? 'border-color: var(--c-primary); color: var(--c-primary);'
+            : 'border-color: transparent; color: var(--c-muted);'}
+          data-tab={tab.id}
+        >
+          {tab.icon && (
+            <svg class="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d={tab.icon} />
+            </svg>
+          )}
+          {tab.label}
+        </button>
+      ))}
+    </div>
+  </div>
+
+  <!-- Tab panels : le slot contient des <div data-panel="id"> -->
+  <div class="tab-panels-wrapper pt-8">
+    <slot />
+  </div>
+</div>
+
+<script>
+  document.querySelectorAll<HTMLElement>('.tabbed-content').forEach((container) => {
+    const groupId = container.dataset.tabgroup!;
+    const defaultTab = container.dataset.default!;
+    const buttons = container.querySelectorAll<HTMLButtonElement>('[role="tab"]');
+
+    // Trouve tous les panels dans le slot (div[data-panel])
+    const wrapper = container.querySelector('.tab-panels-wrapper');
+    if (!wrapper) return;
+    const panels = wrapper.querySelectorAll<HTMLElement>('[data-panel]');
+
+    // Init : cache tous sauf default
+    panels.forEach((panel) => {
+      const panelId = panel.dataset.panel!;
+      panel.id = `panel-${groupId}-${panelId}`;
+      panel.setAttribute('role', 'tabpanel');
+      panel.setAttribute('aria-labelledby', `tab-${groupId}-${panelId}`);
+      if (panelId !== defaultTab) {
+        panel.classList.add('hidden');
+      }
+    });
+
+    function activate(tabId: string) {
+      buttons.forEach((btn) => {
+        const active = btn.dataset.tab === tabId;
+        btn.setAttribute('aria-selected', String(active));
+        btn.tabIndex = active ? 0 : -1;
+        if (active) {
+          btn.style.borderColor = 'var(--c-primary)';
+          btn.style.color = 'var(--c-primary)';
+        } else {
+          btn.style.borderColor = 'transparent';
+          btn.style.color = 'var(--c-muted)';
+        }
+      });
+      panels.forEach((panel) => {
+        panel.classList.toggle('hidden', panel.dataset.panel !== tabId);
+      });
+    }
+
+    buttons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        activate(btn.dataset.tab!);
+        btn.focus();
+      });
+
+      btn.addEventListener('keydown', (e) => {
+        const btns = Array.from(buttons);
+        const idx = btns.indexOf(btn);
+        if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
+          e.preventDefault();
+          const next = e.key === 'ArrowRight'
+            ? btns[(idx + 1) % btns.length]
+            : btns[(idx - 1 + btns.length) % btns.length];
+          activate(next.dataset.tab!);
+          next.focus();
+        }
+        if (e.key === 'Home') { e.preventDefault(); activate(btns[0].dataset.tab!); btns[0].focus(); }
+        if (e.key === 'End') { e.preventDefault(); activate(btns[btns.length - 1].dataset.tab!); btns[btns.length - 1].focus(); }
+      });
+    });
+  });
+</script>

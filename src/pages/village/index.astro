@@ -1,0 +1,263 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/Navbar.astro';
+import Footer from '../../components/Footer.astro';
+import StatsCounter from '../../components/StatsCounter.astro';
+import PostCard from '../../components/PostCard.astro';
+
+// Articles histoire et revue de presse
+const allActualites = await getCollection('actualites');
+allActualites.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+
+const histoireArticles = allActualites.filter((a) =>
+  ['Histoire', 'Archives', 'Patrimoine'].includes(a.data.categorie ?? '')
+);
+
+const revuePresse = allActualites.filter((a) =>
+  a.data.categorie === 'Revue de presse'
+);
+
+const stats = [
+  { value: 474, label: 'Habitants', unit: '' },
+  { value: 274, label: 'Hectares', unit: ' ha' },
+  { value: 190, label: "Altitude", unit: ' m' },
+  { value: 15, label: 'Élus municipaux', unit: '' },
+];
+
+const blocs = [
+  {
+    tag: 'Histoire',
+    title: 'Un village aux racines médiévales',
+    text: "Mentionné dès le XIIe siècle dans les chroniques abbatiales, Kienheim puise son nom dans l'ancien haut-allemand : « Kien » (pin sylvestre) et « heim » (foyer). Village agricole par excellence, il a traversé les siècles en conservant son identité alsacienne profonde.",
+    extra: "Les archives de la commune remontent à 1347, témoignant d'une vie communautaire organisée bien avant la Révolution française.",
+    gradient: 'from-amber-700 via-orange-600 to-yellow-600',
+    imageRight: false,
+  },
+  {
+    tag: 'Patrimoine',
+    title: 'Colombages, église et cours fleuries',
+    text: "L'église Saint-Pierre-et-Paul, dont le clocher roman domine le village, est le joyau architectural de Kienheim. Les maisons à colombages aux volets de bois peints témoignent de l'architecture rurale alsacienne traditionnelle.",
+    extra: "Chaque été, le concours des maisons fleuries attire de nombreux visiteurs venus admirer les géraniums débordant des fenêtres à meneaux.",
+    gradient: 'from-stone-600 via-stone-500 to-amber-600',
+    imageRight: true,
+  },
+  {
+    tag: 'Nature & Kochersberg',
+    title: "Le grenier de l'Alsace",
+    text: "Le Kochersberg, plateau limoneux entre Strasbourg et Saverne, est surnommé le « grenier de l'Alsace » pour ses terres agricoles exceptionnelles. Autour de Kienheim s'étendent des champs de blé, de colza et de maïs.",
+    extra: "Le chemin de promenade du Geisberg, en cours de valorisation, offre une balade bucolique au cœur du terroir.",
+    gradient: 'from-green-800 via-emerald-700 to-teal-600',
+    imageRight: false,
+  },
+];
+
+// Terrains de jeux
+const terrains = [
+  {
+    name: 'Parc du Huneberg',
+    adresse: 'Rue du Huneberg, 67270 Kienheim',
+    desc: 'Aire de jeux pour enfants, bancs, espace pique-nique. Accessible à tous.',
+    gradient: 'from-green-700 to-emerald-500',
+  },
+  {
+    name: 'Terrain de football',
+    adresse: 'Route de Nordheim, 67270 Kienheim',
+    desc: 'Terrain municipal utilisé par les associations sportives locales.',
+    gradient: 'from-blue-700 to-blue-500',
+  },
+  {
+    name: 'Aire multisports',
+    adresse: 'Rue de l\'École, 67270 Kienheim',
+    desc: 'Basket, pétanque, espace fitness en plein air. Ouvert à tous.',
+    gradient: 'from-orange-700 to-amber-500',
+  },
+];
+---
+
+<Layout title="Le Village — Kienheim" description="Histoire, patrimoine, démographie et découverte de Kienheim, village alsacien du Kochersberg.">
+  <Navbar />
+  <main id="main-content" class="pt-16">
+
+    <!-- Hero -->
+    <div class="py-12 px-4 sm:px-6 lg:px-8" style="background: var(--c-primary);">
+      <div class="max-w-7xl mx-auto">
+        <div class="flex items-center gap-3 mb-2">
+          <a href="/" class="text-white/70 hover:text-white text-sm transition-colors">Accueil</a>
+          <span class="text-white/40">/</span>
+          <span class="text-white text-sm font-medium">Le Village</span>
+        </div>
+        <h1 class="text-3xl sm:text-4xl font-black text-white">Le Village</h1>
+        <p class="mt-2 text-white/80 max-w-xl">
+          Histoire, patrimoine, nature et vie locale — à la découverte de Kienheim.
+        </p>
+      </div>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <!-- ── Chiffres clés ── -->
+      <section class="py-16" aria-labelledby="stats-heading">
+        <div class="mb-10 reveal">
+          <div class="flex items-center gap-4 mb-3">
+            <div class="section-line"></div>
+            <span class="section-tag">En chiffres</span>
+          </div>
+          <h2 id="stats-heading" class="text-2xl sm:text-3xl font-black section-title">
+            Kienheim en quelques chiffres
+          </h2>
+        </div>
+        <StatsCounter stats={stats} />
+      </section>
+
+      <!-- ── Histoire & Patrimoine ── -->
+      <section class="py-16" aria-labelledby="histoire-heading">
+        <div class="text-center mb-16 reveal">
+          <div class="flex items-center justify-center gap-4 mb-3">
+            <div class="section-line"></div>
+            <span class="section-tag">Le Village</span>
+            <div class="section-line"></div>
+          </div>
+          <h2 id="histoire-heading" class="text-2xl sm:text-3xl font-black section-title">
+            Histoire & Patrimoine
+          </h2>
+          <p class="mt-3 max-w-xl mx-auto text-sm" style="color: var(--c-muted);">
+            Un village vivant, ancré dans son terroir alsacien, entre histoire et nature préservée.
+          </p>
+        </div>
+
+        <div class="space-y-20">
+          {blocs.map((bloc, index) => (
+            <div
+              class={`flex flex-col ${bloc.imageRight ? 'lg:flex-row-reverse' : 'lg:flex-row'} gap-8 lg:gap-16 items-center reveal`}
+              style={`transition-delay: ${index * 0.1}s;`}
+            >
+              <!-- Image placeholder -->
+              <div class="w-full lg:w-1/2 overflow-hidden rounded-2xl shadow-xl aspect-[4/3] relative">
+                <div class={`w-full h-full bg-gradient-to-br ${bloc.gradient} flex flex-col items-center justify-center`}>
+                  <span class="text-white/40 text-sm font-medium tracking-widest uppercase">Photo à venir</span>
+                </div>
+                <div class="absolute top-4 left-4">
+                  <span class="badge-secondary">{bloc.tag}</span>
+                </div>
+              </div>
+
+              <!-- Texte -->
+              <div class="w-full lg:w-1/2 space-y-4">
+                <div class="flex items-center gap-3">
+                  <div class="section-line"></div>
+                  <span class="section-tag">{bloc.tag}</span>
+                </div>
+                <h3 class="text-2xl sm:text-3xl font-black leading-tight" style="color: var(--c-primary);">
+                  {bloc.title}
+                </h3>
+                <p class="leading-relaxed text-base" style="color: var(--c-muted);">
+                  {bloc.text}
+                </p>
+                <blockquote
+                  class="pl-4 text-sm italic"
+                  style="border-left: 2px solid var(--c-accent); color: var(--c-muted);"
+                >
+                  {bloc.extra}
+                </blockquote>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <!-- Articles histoire depuis la collection -->
+        {histoireArticles.length > 0 && (
+          <div class="mt-16">
+            <h3 class="text-xl font-bold mb-6" style="color: var(--c-fg);">Articles sur l'histoire de Kienheim</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+              {histoireArticles.map((article) => (
+                <PostCard
+                  title={article.data.title}
+                  date={article.data.date}
+                  description={article.data.description ?? ''}
+                  slug={article.slug}
+                  image={article.data.image}
+                  categorie={article.data.categorie}
+                />
+              ))}
+            </div>
+          </div>
+        )}
+      </section>
+
+      <!-- ── Terrains de jeux & Loisirs ── -->
+      <section class="py-16 border-t" style="border-color: var(--c-border);" aria-labelledby="loisirs-heading">
+        <div class="mb-10 reveal">
+          <div class="flex items-center gap-4 mb-3">
+            <div class="section-line"></div>
+            <span class="section-tag">Loisirs</span>
+          </div>
+          <h2 id="loisirs-heading" class="text-2xl sm:text-3xl font-black section-title">
+            Terrains de jeux & Loisirs
+          </h2>
+          <p class="mt-2 text-sm" style="color: var(--c-muted);">
+            Espaces de loisirs et de sport à Kienheim.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          {terrains.map((t, i) => (
+            <article
+              class={`reveal reveal-delay-${i + 1} bento-card bg-white dark:bg-kienheim-dark-surface shadow-sm overflow-hidden`}
+              style="border: 1px solid var(--c-border);"
+            >
+              <div class={`h-32 bg-gradient-to-br ${t.gradient} flex items-center justify-center`} aria-hidden="true">
+                <svg class="w-12 h-12 text-white/50" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+                </svg>
+              </div>
+              <div class="p-5">
+                <h3 class="font-bold" style="color: var(--c-primary);">{t.name}</h3>
+                <p class="text-xs mt-1 flex items-center gap-1" style="color: var(--c-muted);">
+                  <svg class="w-3 h-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                  </svg>
+                  {t.adresse}
+                </p>
+                <p class="text-sm mt-2 leading-relaxed" style="color: var(--c-muted);">{t.desc}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <!-- ── Revue de presse ── -->
+      {revuePresse.length > 0 && (
+        <section class="py-16 border-t pb-20" style="border-color: var(--c-border);" aria-labelledby="presse-heading">
+          <div class="mb-10 reveal">
+            <div class="flex items-center gap-4 mb-3">
+              <div class="section-line"></div>
+              <span class="section-tag">Médias</span>
+            </div>
+            <h2 id="presse-heading" class="text-2xl sm:text-3xl font-black section-title">
+              Revue de presse
+            </h2>
+            <p class="mt-2 text-sm" style="color: var(--c-muted);">
+              Kienheim dans les médias locaux.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {revuePresse.map((article) => (
+              <PostCard
+                title={article.data.title}
+                date={article.data.date}
+                description={article.data.description ?? ''}
+                slug={article.slug}
+                image={article.data.image}
+                categorie={article.data.categorie}
+              />
+            ))}
+          </div>
+        </section>
+      )}
+
+    </div>
+  </main>
+  <Footer />
+</Layout>

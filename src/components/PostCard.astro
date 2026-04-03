@@ -1,0 +1,80 @@
+---
+export interface Props {
+  title: string;
+  date: Date;
+  description: string;
+  slug: string;
+  image?: string;
+  categorie?: string;
+  collection?: string; // 'actualites' par défaut
+}
+
+const {
+  title,
+  date,
+  description,
+  slug,
+  image,
+  categorie,
+  collection = 'actualites',
+} = Astro.props;
+
+const href = `/${collection}/${slug}`;
+const fmtDate = (d: Date) =>
+  d.toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' });
+---
+
+<article
+  class="post-card bento-card bg-white dark:bg-kienheim-dark-surface flex flex-col h-full shadow-sm reveal"
+  style="border: 1px solid var(--c-border);"
+  aria-labelledby={`post-${slug}`}
+>
+  {image && (
+    <div class="overflow-hidden rounded-t-[1.25rem]">
+      <img
+        src={image}
+        alt=""
+        loading="lazy"
+        class="w-full h-44 object-cover transition-transform duration-300 group-hover:scale-105"
+        aria-hidden="true"
+      />
+    </div>
+  )}
+
+  <div class="p-5 flex flex-col flex-1">
+    <div class="flex items-center gap-2 mb-3 flex-wrap">
+      {categorie && (
+        <span class="badge-secondary">{categorie}</span>
+      )}
+      <time
+        class="text-xs"
+        style="color: var(--c-muted);"
+        datetime={date.toISOString()}
+      >
+        {fmtDate(date)}
+      </time>
+    </div>
+
+    <h3
+      id={`post-${slug}`}
+      class="text-base font-bold leading-snug mb-2"
+      style="color: var(--c-primary);"
+    >
+      {title}
+    </h3>
+
+    <p class="text-sm leading-relaxed flex-1" style="color: var(--c-muted);">
+      {description.length > 160 ? description.slice(0, 157) + '…' : description}
+    </p>
+
+    <a
+      href={href}
+      class="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold link-primary hover:gap-2.5 transition-all duration-200"
+    >
+      Lire la suite
+      <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+      </svg>
+    </a>
+  </div>
+</article>

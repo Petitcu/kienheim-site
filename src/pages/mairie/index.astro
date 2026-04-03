@@ -1,0 +1,283 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/Navbar.astro';
+import Footer from '../../components/Footer.astro';
+import SidebarNav from '../../components/SidebarNav.astro';
+import DocumentList from '../../components/DocumentList.astro';
+import InfoBlocks from '../../components/InfoBlocks.astro';
+import Conseil from '../../components/Conseil.astro';
+
+// Collections
+const allArretes = await getCollection('arretes');
+allArretes.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+
+const allConseil = await getCollection('conseil');
+allConseil.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+
+// Prépare les items pour DocumentList
+const arretesItems = allArretes.map((a) => ({
+  title: a.data.title,
+  date: a.data.date,
+  url: a.data.document_pdf ?? undefined,
+  categorie: a.data.categorie ?? 'Arrêté municipal',
+  slug: a.slug,
+  collection: 'arretes',
+}));
+
+const conseilItems = allConseil.map((c) => ({
+  title: c.data.title,
+  date: c.data.date,
+  url: c.data.document_pdf ?? undefined,
+  categorie: 'Compte-rendu',
+  slug: c.slug,
+  collection: 'conseil',
+}));
+
+// Sections sidebar
+const sections = [
+  { id: 'comptes-rendus', label: 'Conseil municipal', icon: 'M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z' },
+  { id: 'arretes', label: 'Arrêtés & règlements', icon: 'M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z' },
+  { id: 'elus', label: 'Les élus', icon: 'M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z' },
+  { id: 'formalites', label: 'Formalités', icon: 'M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2' },
+  { id: 'plui', label: 'PLUi & Urbanisme', icon: 'M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7' },
+];
+
+// Formalités administratives
+const formalites = [
+  {
+    icon: 'M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-5m-4 0V5a2 2 0 114 0v1m-4 0a2 2 0 104 0m-5 8a2 2 0 100-4 2 2 0 000 4zm0 0c1.306 0 2.417.835 2.83 2M9 14a3.001 3.001 0 00-2.83 2',
+    title: "Carte nationale d'identité",
+    description: 'Sur rendez-vous en mairie. Dossier sur service-public.fr.',
+    href: 'https://www.service-public.fr/particuliers/vosdroits/N360',
+    external: true,
+  },
+  {
+    icon: 'M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z',
+    title: 'Passeport biométrique',
+    description: 'Demande en ligne, dépôt à Truchtersheim ou Strasbourg.',
+    href: 'https://www.service-public.fr/particuliers/vosdroits/N360',
+    external: true,
+  },
+  {
+    icon: 'M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z',
+    title: 'État civil',
+    description: 'Actes de naissance, mariage, décès. Demande en mairie ou en ligne.',
+    href: 'https://www.service-public.fr/particuliers/vosdroits/N359',
+    external: true,
+  },
+  {
+    icon: 'M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6',
+    title: 'Urbanisme & permis',
+    description: 'Permis de construire, déclarations préalables. Instruction par la ComCom.',
+    href: 'https://www.service-public.fr/particuliers/vosdroits/N319',
+    external: true,
+  },
+  {
+    icon: 'M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4',
+    title: 'Listes électorales',
+    description: 'Inscription, modification. Vérifiez votre inscription sur Elections.interieur.gouv.fr.',
+    href: 'https://www.elections.interieur.gouv.fr/',
+    external: true,
+  },
+  {
+    icon: 'M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z',
+    title: 'Recensement citoyen',
+    description: 'Obligatoire à 16 ans. Se faire recenser en mairie ou en ligne.',
+    href: 'https://www.service-public.fr/particuliers/vosdroits/F870',
+    external: true,
+  },
+  {
+    icon: 'M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253',
+    title: 'Aide numérique',
+    description: 'Permanence aide aux démarches en ligne. Renseignements en mairie.',
+    href: 'mailto:contact@kienheim.fr',
+    external: false,
+  },
+  {
+    icon: 'M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-2 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4',
+    title: 'Légalisation & apostille',
+    description: 'Légalisation de documents. Renseignements en préfecture du Bas-Rhin.',
+    href: 'https://www.bas-rhin.gouv.fr/',
+    external: true,
+  },
+];
+---
+
+<Layout title="La Mairie — Kienheim" description="Conseil municipal, arrêtés, élus, formalités administratives et urbanisme de la commune de Kienheim.">
+  <Navbar />
+  <main id="main-content" class="pt-16">
+
+    <!-- Hero section -->
+    <div class="py-12 px-4 sm:px-6 lg:px-8" style="background: var(--c-primary);">
+      <div class="max-w-7xl mx-auto">
+        <div class="flex items-center gap-3 mb-2">
+          <a href="/" class="text-white/70 hover:text-white text-sm transition-colors">Accueil</a>
+          <span class="text-white/40">/</span>
+          <span class="text-white text-sm font-medium">La Mairie</span>
+        </div>
+        <h1 class="text-3xl sm:text-4xl font-black text-white">La Mairie</h1>
+        <p class="mt-2 text-white/80 max-w-xl">
+          Conseil municipal, arrêtés et règlements, élus, formalités administratives et urbanisme.
+        </p>
+      </div>
+    </div>
+
+    <!-- Layout sidebar + contenu -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div class="lg:flex lg:gap-12">
+
+        <!-- Sidebar -->
+        <SidebarNav sections={sections} />
+
+        <!-- Contenu principal -->
+        <div class="flex-1 min-w-0 space-y-20">
+
+          <!-- ── Conseil municipal & Comptes-rendus ── -->
+          <section id="comptes-rendus" aria-labelledby="cr-heading" class="scroll-mt-20">
+            <div class="mb-8">
+              <div class="flex items-center gap-4 mb-3">
+                <div class="section-line"></div>
+                <span class="section-tag">Gouvernance</span>
+              </div>
+              <h2 id="cr-heading" class="text-2xl sm:text-3xl font-black section-title">
+                Conseil municipal
+              </h2>
+              <p class="mt-2 text-sm max-w-xl" style="color: var(--c-muted);">
+                Comptes-rendus des séances du conseil municipal. Téléchargez les procès-verbaux officiels.
+              </p>
+            </div>
+
+            <!-- Trombinoscope (réutilise le composant existant) -->
+            <div class="mb-12">
+              <Conseil />
+            </div>
+
+            <!-- Comptes-rendus accordion -->
+            <h3 class="text-lg font-bold mb-4" style="color: var(--c-fg);">Comptes-rendus des séances</h3>
+            {conseilItems.length > 0 ? (
+              <DocumentList items={conseilItems} id="conseil-list" />
+            ) : (
+              <p class="text-sm" style="color: var(--c-muted);">Aucun compte-rendu disponible.</p>
+            )}
+          </section>
+
+          <!-- ── Arrêtés & règlements ── -->
+          <section id="arretes" aria-labelledby="arretes-heading" class="scroll-mt-20">
+            <div class="mb-8">
+              <div class="flex items-center gap-4 mb-3">
+                <div class="section-line"></div>
+                <span class="section-tag">Réglementation</span>
+              </div>
+              <h2 id="arretes-heading" class="text-2xl sm:text-3xl font-black section-title">
+                Arrêtés & règlements
+              </h2>
+              <p class="mt-2 text-sm max-w-xl" style="color: var(--c-muted);">
+                Arrêtés municipaux, règlements de voirie, interdictions temporaires et règlements permanents.
+              </p>
+            </div>
+
+            {arretesItems.length > 0 ? (
+              <DocumentList items={arretesItems} id="arretes-list" />
+            ) : (
+              <p class="text-sm" style="color: var(--c-muted);">Aucun arrêté disponible.</p>
+            )}
+          </section>
+
+          <!-- ── Élus (trombinoscope standalone dans la page) ── -->
+          <section id="elus" aria-labelledby="elus-heading" class="scroll-mt-20">
+            <div class="mb-8">
+              <div class="flex items-center gap-4 mb-3">
+                <div class="section-line"></div>
+                <span class="section-tag">Représentation</span>
+              </div>
+              <h2 id="elus-heading" class="text-2xl sm:text-3xl font-black section-title">
+                Les élus
+              </h2>
+              <p class="mt-2 text-sm max-w-xl" style="color: var(--c-muted);">
+                Mandat 2026–2032 · Liste « Kienheim, Terroir et Avenir »
+              </p>
+            </div>
+            <p class="text-sm" style="color: var(--c-muted);">
+              Retrouvez le trombinoscope complet en haut de cette page dans la section Conseil municipal.
+            </p>
+          </section>
+
+          <!-- ── Formalités administratives ── -->
+          <section id="formalites" aria-labelledby="formalites-heading" class="scroll-mt-20">
+            <div class="mb-8">
+              <div class="flex items-center gap-4 mb-3">
+                <div class="section-line"></div>
+                <span class="section-tag">Démarches</span>
+              </div>
+              <h2 id="formalites-heading" class="text-2xl sm:text-3xl font-black section-title">
+                Formalités administratives
+              </h2>
+              <p class="mt-2 text-sm max-w-xl" style="color: var(--c-muted);">
+                Accédez aux démarches les plus courantes. Les liens marqués d'une flèche ouvrent le site service-public.fr.
+              </p>
+            </div>
+
+            <InfoBlocks blocks={formalites} columns={4} />
+          </section>
+
+          <!-- ── PLUi & Urbanisme ── -->
+          <section id="plui" aria-labelledby="plui-heading" class="scroll-mt-20 pb-16">
+            <div class="mb-8">
+              <div class="flex items-center gap-4 mb-3">
+                <div class="section-line"></div>
+                <span class="section-tag">Urbanisme</span>
+              </div>
+              <h2 id="plui-heading" class="text-2xl sm:text-3xl font-black section-title">
+                PLUi & Urbanisme
+              </h2>
+            </div>
+
+            <div
+              class="rounded-2xl p-6 sm:p-8"
+              style="background: color-mix(in srgb, var(--c-primary) 8%, transparent); border: 1px solid var(--c-border);"
+            >
+              <h3 class="text-lg font-bold mb-3" style="color: var(--c-primary);">
+                Plan Local d'Urbanisme intercommunal (PLUi)
+              </h3>
+              <p class="text-sm leading-relaxed mb-4" style="color: var(--c-muted);">
+                Kienheim est soumis au Plan Local d'Urbanisme intercommunal de la Communauté de Communes du Kochersberg-Ackerland. Le PLUi définit les règles d'utilisation des sols, les zones constructibles, les prescriptions architecturales et les espaces naturels protégés sur l'ensemble des communes du territoire.
+              </p>
+              <p class="text-sm leading-relaxed mb-6" style="color: var(--c-muted);">
+                Pour toute demande d'autorisation d'urbanisme (permis de construire, déclaration préalable, certificat d'urbanisme), déposez votre dossier en mairie ou directement sur le guichet numérique de la ComCom.
+              </p>
+              <div class="flex flex-wrap gap-3">
+                <a
+                  href="https://www.cc-kochersberg.fr/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="btn-accent"
+                >
+                  <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
+                  Site de la ComCom Kochersberg
+                </a>
+                <a
+                  href="https://www.service-public.fr/particuliers/vosdroits/N319"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="link-primary inline-flex items-center gap-2 text-sm font-semibold"
+                >
+                  Démarches urbanisme — service-public.fr →
+                </a>
+              </div>
+            </div>
+          </section>
+
+        </div>
+      </div>
+    </div>
+
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  .scroll-mt-20 { scroll-margin-top: 5rem; }
+</style>

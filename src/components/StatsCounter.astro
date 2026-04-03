@@ -1,0 +1,68 @@
+---
+export interface Stat {
+  value: number;
+  label: string;
+  unit?: string;
+  prefix?: string;
+}
+
+export interface Props {
+  stats: Stat[];
+}
+
+const { stats } = Astro.props;
+---
+
+<div class="stats-counter grid grid-cols-2 sm:grid-cols-4 gap-6">
+  {stats.map((stat, i) => (
+    <div class="text-center reveal" style={`transition-delay: ${i * 0.1}s`}>
+      <p
+        class="stats-number text-4xl sm:text-5xl font-black tabular-nums leading-none"
+        style="color: var(--c-primary);"
+        data-target={stat.value}
+        data-prefix={stat.prefix ?? ''}
+        data-unit={stat.unit ?? ''}
+        aria-live="polite"
+      >
+        {stat.prefix ?? ''}{stat.value}{stat.unit ?? ''}
+      </p>
+      <p class="text-sm mt-2" style="color: var(--c-muted);">{stat.label}</p>
+    </div>
+  ))}
+</div>
+
+<script>
+  function runCounter(el: HTMLElement) {
+    const target = parseInt(el.dataset.target ?? '0', 10);
+    const prefix = el.dataset.prefix ?? '';
+    const unit = el.dataset.unit ?? '';
+    const duration = 1800;
+    const start = performance.now();
+
+    function tick(now: number) {
+      const elapsed = now - start;
+      const progress = Math.min(elapsed / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      el.textContent = prefix + Math.round(eased * target).toString() + unit;
+      if (progress < 1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  }
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          runCounter(entry.target as HTMLElement);
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.5 }
+  );
+
+  document.querySelectorAll<HTMLElement>('.stats-number').forEach((el) => {
+    el.textContent = (el.dataset.prefix ?? '') + '0' + (el.dataset.unit ?? '');
+    observer.observe(el);
+  });
+</script>

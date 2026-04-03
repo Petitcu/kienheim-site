@@ -1,4 +1,5 @@
 ---
+import { getCollection } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
 import Navbar from '../components/Navbar.astro';
 import Hero from '../components/Hero.astro';
@@ -7,6 +8,21 @@ import Decouvrir from '../components/Decouvrir.astro';
 import Conseil from '../components/Conseil.astro';
 import ViePratique from '../components/ViePratique.astro';
 import Footer from '../components/Footer.astro';
+import PostCard from '../components/PostCard.astro';
+import EventCard from '../components/EventCard.astro';
+
+// 3 dernières actualités
+const allActualites = await getCollection('actualites');
+allActualites.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+const latestArticles = allActualites.slice(0, 3);
+
+// 4 prochains événements
+const allEvenements = await getCollection('evenements');
+const now = new Date();
+const upcomingEvents = allEvenements
+  .filter((e) => e.data.date_debut >= now)
+  .sort((a, b) => a.data.date_debut.getTime() - b.data.date_debut.getTime())
+  .slice(0, 4);
 ---
 
 <Layout>
@@ -14,6 +30,110 @@ import Footer from '../components/Footer.astro';
   <main id="main-content">
     <Hero />
     <BentoGrid />
+
+    <!-- ── Dernières actualités ── -->
+    <section id="actualites" class="py-20 px-4 sm:px-6 lg:px-8" style="background: var(--c-bg);" aria-labelledby="actu-heading">
+      <div class="max-w-7xl mx-auto">
+        <div class="flex items-end justify-between mb-10 reveal">
+          <div>
+            <div class="flex items-center gap-4 mb-3">
+              <div class="section-line"></div>
+              <span class="section-tag">Actualités</span>
+            </div>
+            <h2 id="actu-heading" class="text-3xl sm:text-4xl font-black section-title">
+              Dernières actualités
+            </h2>
+          </div>
+          <a
+            href="/vivre"
+            class="hidden sm:inline-flex items-center gap-2 text-sm font-semibold link-primary hover:gap-3 transition-all duration-200"
+          >
+            Toutes les actualités
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </a>
+        </div>
+
+        {latestArticles.length > 0 ? (
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {latestArticles.map((article, i) => (
+              <div class={`reveal reveal-delay-${i + 1}`}>
+                <PostCard
+                  title={article.data.title}
+                  date={article.data.date}
+                  description={article.data.description ?? ''}
+                  slug={article.slug}
+                  image={article.data.image}
+                  categorie={article.data.categorie}
+                />
+              </div>
+            ))}
+          </div>
+        ) : (
+          <p class="text-sm" style="color: var(--c-muted);">Aucune actualité disponible.</p>
+        )}
+
+        <div class="mt-8 sm:hidden reveal">
+          <a href="/vivre" class="link-primary text-sm font-semibold inline-flex items-center gap-2">
+            Toutes les actualités →
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Agenda ── -->
+    {upcomingEvents.length > 0 && (
+      <section id="evenements" class="py-20 px-4 sm:px-6 lg:px-8" style="background: color-mix(in srgb, var(--c-primary) 5%, var(--c-bg));" aria-labelledby="agenda-heading">
+        <div class="max-w-7xl mx-auto">
+          <div class="flex items-end justify-between mb-10 reveal">
+            <div>
+              <div class="flex items-center gap-4 mb-3">
+                <div class="section-line"></div>
+                <span class="section-tag">Agenda</span>
+              </div>
+              <h2 id="agenda-heading" class="text-3xl sm:text-4xl font-black section-title">
+                Prochains événements
+              </h2>
+            </div>
+            <a
+              href="/vivre"
+              class="hidden sm:inline-flex items-center gap-2 text-sm font-semibold link-primary hover:gap-3 transition-all duration-200"
+            >
+              Voir l'agenda
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </a>
+          </div>
+
+          <!-- Scroll horizontal mobile, grille desktop -->
+          <div class="flex gap-4 overflow-x-auto pb-4 sm:overflow-visible sm:grid sm:grid-cols-2 lg:grid-cols-4 sm:pb-0 snap-x snap-mandatory sm:snap-none">
+            {upcomingEvents.map((evt, i) => (
+              <div
+                class={`flex-shrink-0 w-72 sm:w-auto snap-start reveal reveal-delay-${i + 1}`}
+              >
+                <EventCard
+                  title={evt.data.title}
+                  date_debut={evt.data.date_debut}
+                  date_fin={evt.data.date_fin}
+                  lieu={evt.data.lieu}
+                  description={evt.data.description}
+                  slug={evt.slug}
+                />
+              </div>
+            ))}
+          </div>
+
+          <div class="mt-8 sm:hidden reveal">
+            <a href="/vivre" class="link-primary text-sm font-semibold inline-flex items-center gap-2">
+              Voir l'agenda complet →
+            </a>
+          </div>
+        </div>
+      </section>
+    )}
+
     <Decouvrir />
     <Conseil />
     <ViePratique />
