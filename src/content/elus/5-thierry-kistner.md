@@ -2,5 +2,5 @@
 nom: "Thierry KISTNER"
 fonction: "Conseiller municipal"
 ordre: 5
-commission: "Finances"
+commission: "Cadre bancaire · 57 ans"
 ---
