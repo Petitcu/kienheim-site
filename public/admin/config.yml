@@ -1,0 +1,132 @@
+# ── Backend ──────────────────────────────────────────────────────────
+backend:
+  name: git-gateway
+  branch: main
+
+# Mode éditorial : brouillons → en révision → publié
+publish_mode: editorial_workflow
+
+# ── Médias ───────────────────────────────────────────────────────────
+media_folder: public/images/uploads
+public_folder: /images/uploads
+
+# ── Locale ───────────────────────────────────────────────────────────
+locale: fr
+
+# ── Collections ──────────────────────────────────────────────────────
+collections:
+
+  # ── Actualités ─────────────────────────────────────────────────────
+  - name: actualites
+    label: Actualités
+    label_singular: Actualité
+    folder: src/content/actualites
+    create: true
+    slug: "{{year}}-{{month}}-{{slug}}"
+    preview_path: "/actualites/{{slug}}"
+    fields:
+      - { name: title,       label: "Titre",                   widget: string,   required: true }
+      - { name: date,        label: "Date de publication",     widget: datetime, required: true,
+          date_format: "DD/MM/YYYY", time_format: "HH:mm", format: "YYYY-MM-DDTHH:mm:ssZ" }
+      - { name: description, label: "Résumé",                  widget: text,     required: true,
+          hint: "Court résumé affiché sur la carte en page d'accueil (max 200 caractères recommandés)" }
+      - { name: categorie,   label: "Catégorie",               widget: select,   required: true,
+          options: ["Information", "Événement", "Travaux", "Associations"],
+          default: "Information" }
+      - { name: image,       label: "Image à la une",          widget: image,    required: false,
+          media_folder: /public/images/actualites,
+          public_folder: /images/actualites,
+          hint: "Image affichée en haut de l'article (format 16:9 recommandé)" }
+      - { name: body,        label: "Contenu de l'article",    widget: markdown, required: false }
+
+  # ── Événements ─────────────────────────────────────────────────────
+  - name: evenements
+    label: Événements
+    label_singular: Événement
+    folder: src/content/evenements
+    create: true
+    slug: "{{year}}-{{month}}-{{slug}}"
+    fields:
+      - { name: title,       label: "Nom de l'événement",      widget: string,   required: true }
+      - { name: date_debut,  label: "Date de début",           widget: datetime, required: true,
+          date_format: "DD/MM/YYYY", time_format: "HH:mm", format: "YYYY-MM-DDTHH:mm:ssZ" }
+      - { name: date_fin,    label: "Date de fin",             widget: datetime, required: false,
+          date_format: "DD/MM/YYYY", time_format: "HH:mm", format: "YYYY-MM-DDTHH:mm:ssZ",
+          hint: "Laisser vide si l'événement dure une seule journée" }
+      - { name: lieu,        label: "Lieu",                    widget: string,   required: false,
+          hint: "Ex : Place de la Mairie, Salle des fêtes…" }
+      - { name: description, label: "Description courte",      widget: text,     required: true }
+      - { name: image,       label: "Affiche / visuel",        widget: image,    required: false,
+          media_folder: /public/images/actualites, public_folder: /images/actualites }
+      - { name: body,        label: "Détails",                 widget: markdown, required: false }
+
+  # ── Comptes-rendus du conseil ───────────────────────────────────────
+  - name: conseil
+    label: Conseil municipal
+    label_singular: Séance du conseil
+    folder: src/content/conseil
+    create: true
+    slug: "{{year}}-{{month}}-{{slug}}"
+    fields:
+      - { name: title,        label: "Titre de la séance",     widget: string,   required: true,
+          hint: "Ex : Séance du conseil municipal du 12 mars 2026" }
+      - { name: date,         label: "Date du conseil",        widget: datetime, required: true,
+          date_format: "DD/MM/YYYY", time_format: "HH:mm", format: "YYYY-MM-DDTHH:mm:ssZ" }
+      - { name: document_pdf, label: "PDF du compte-rendu",    widget: file,     required: false,
+          media_folder: /public/documents/conseil,
+          public_folder: /documents/conseil,
+          hint: "Compte-rendu officiel en PDF (téléchargeable par les habitants)" }
+      - { name: body,         label: "Résumé / ordre du jour", widget: markdown, required: false }
+
+  # ── KienheiMAG / Bulletins ─────────────────────────────────────────
+  - name: bulletins
+    label: KienheiMAG
+    label_singular: Bulletin
+    folder: src/content/bulletins
+    create: true
+    slug: "bulletin-{{fields.numero}}"
+    fields:
+      - { name: title,            label: "Titre du bulletin",     widget: string,   required: true,
+          hint: "Ex : KienheiMAG n°12 — Printemps 2026" }
+      - { name: numero,           label: "Numéro",                widget: number,   required: true,
+          value_type: int, min: 1 }
+      - { name: date,             label: "Date de parution",      widget: datetime, required: true,
+          date_format: "DD/MM/YYYY", time_format: false, format: "YYYY-MM-DD" }
+      - { name: fichier_pdf,      label: "Fichier PDF du bulletin", widget: file,   required: true,
+          media_folder: /public/documents/bulletins,
+          public_folder: /documents/bulletins }
+      - { name: image_couverture, label: "Image de couverture",   widget: image,    required: false,
+          media_folder: /public/images/uploads, public_folder: /images/uploads }
+      - { name: body,             label: "Erratum / notes",       widget: markdown, required: false }
+
+  # ── Élus ────────────────────────────────────────────────────────────
+  - name: elus
+    label: Élus
+    label_singular: Élu·e
+    folder: src/content/elus
+    create: true
+    slug: "{{fields.ordre}}-{{slug}}"
+    sortable_fields: [ordre, nom]
+    fields:
+      - { name: nom,       label: "Nom complet",        widget: string,   required: true,
+          hint: "Prénom NOM (ex : Olivier COURSON)" }
+      - { name: fonction,  label: "Fonction",            widget: select,   required: true,
+          options: ["Maire", "1er Adjoint", "2ème Adjoint", "3ème Adjoint",
+                    "Conseiller municipal", "Conseillère municipale"] }
+      - { name: ordre,     label: "Ordre d'affichage",  widget: number,   required: true,
+          value_type: int, min: 1,
+          hint: "1 pour le maire, 2 pour le 1er adjoint, etc." }
+      - { name: commission, label: "Commission / délégation", widget: string, required: false,
+          hint: "Ex : Urbanisme, Finances, Environnement…" }
+      - { name: photo,     label: "Photo",               widget: image,    required: false,
+          media_folder: /public/images/elus, public_folder: /images/elus }
+
+  # ── Pages fixes ─────────────────────────────────────────────────────
+  - name: pages
+    label: Pages du site
+    label_singular: Page
+    folder: src/content/pages
+    create: false
+    fields:
+      - { name: title, label: "Titre de la page", widget: string,   required: true }
+      - { name: body,  label: "Contenu",           widget: markdown, required: false }

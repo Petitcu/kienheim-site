@@ -1,29 +1,29 @@
 ---
-const articles = [
-  {
-    id: 'actu-elections',
-    badge: 'Actualité',
-    date: '15 mars 2026',
-    datetime: '2026-03-15',
-    title: 'Nouvelle équipe municipale élue — « Kienheim, Terroir et Avenir »',
-    intro: "Olivier Courson et sa liste ont été élus lors des élections municipales de mars 2026. Fort de son expérience d'adjoint depuis 2008, le nouveau maire s'engage pour une gestion rigoureuse des finances, la protection du patrimoine, le renforcement des infrastructures et l'encouragement des initiatives citoyennes.",
-    bullets: [
-      'Gestion rigoureuse des finances sans alourdir la fiscalité',
-      'Réaménagement du parc du Huneberg',
-      'Projets écologiques et solidarité intergénérationnelle',
-    ],
-    // Contenu étendu affiché uniquement dans la modale
-    body: `
-      <p>La liste « Kienheim, Terroir et Avenir » conduite par Olivier Courson a remporté les élections municipales du 15 mars 2026 avec 68 % des suffrages exprimés. Cette liste rassemble 6 conseillers sortants expérimentés et 9 nouveaux colistiers aux profils complémentaires.</p>
-      <h3>Un programme en quatre axes</h3>
-      <p><strong>Finances et fiscalité.</strong> La nouvelle équipe s'engage à maintenir une gestion saine et rigoureuse du budget communal, en maîtrisant la fiscalité locale pour ne pas alourdir les charges des habitants.</p>
-      <p><strong>Patrimoine et écologie.</strong> La protection du bâti ancien, le soutien au fleurissement raisonné et le développement de projets écologiques concrets figurent au cœur du programme.</p>
-      <p><strong>Infrastructures.</strong> La restructuration de l'atelier municipal et le réaménagement du parc du Huneberg sont les deux grands chantiers d'investissement annoncés pour le mandat 2026–2032.</p>
-      <p><strong>Cohésion sociale et culture.</strong> La mise en place d'un point relais de la médiathèque intercommunale, le soutien aux associations et l'organisation de manifestations régulières renforceront le lien entre les générations.</p>
-      <p>L'installation officielle du conseil municipal aura lieu lors de la première réunion publique, fixée au vendredi 4 avril 2026 à 19h30, salle de l'école de Kienheim.</p>
-    `,
-  },
-];
+import { getCollection } from 'astro:content';
+
+// Récupération des actualités triées par date décroissante
+const allActualites = await getCollection('actualites');
+allActualites.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+const latestArticle = allActualites[0];
+
+// Récupération du prochain événement (date_debut >= aujourd'hui)
+const allEvenements = await getCollection('evenements');
+const now = new Date();
+const upcomingEvents = allEvenements
+  .filter((e) => e.data.date_debut >= now)
+  .sort((a, b) => a.data.date_debut.getTime() - b.data.date_debut.getTime());
+const nextEvent = upcomingEvents[0] ?? allEvenements.sort((a, b) => b.data.date_debut.getTime() - a.data.date_debut.getTime())[0];
+
+// Récupération du dernier bulletin
+const allBulletins = await getCollection('bulletins');
+allBulletins.sort((a, b) => b.data.numero - a.data.numero);
+const lastBulletin = allBulletins[0];
+
+// Formateurs de date
+const fmtDate = (d: Date) =>
+  d.toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' });
+const fmtDay  = (d: Date) => d.toLocaleDateString('fr-FR', { day: 'numeric' });
+const fmtMon  = (d: Date) => d.toLocaleDateString('fr-FR', { month: 'short', year: 'numeric' });
 ---
 
 <section id="apercu" class="py-20 px-4 sm:px-6 lg:px-8" style="background: var(--c-bg);" aria-labelledby="bento-heading">
@@ -44,11 +44,11 @@ const articles = [
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 auto-rows-[minmax(180px,auto)]">
 
       <!-- Carte 1 : Dernière actualité (grande 2x2) -->
-      {articles.map((art) => (
+      {latestArticle ? (
         <article
           class="bento-card sm:col-span-2 lg:col-span-2 lg:row-span-2 bg-white dark:bg-kienheim-dark-surface shadow-sm p-6 flex flex-col justify-between reveal"
           style="border: 1px solid var(--c-border);"
-          aria-labelledby={`card-title-${art.id}`}
+          aria-labelledby="card-title-latest"
         >
           <div>
             <div class="flex items-center gap-2 mb-4">
@@ -57,38 +57,37 @@ const articles = [
                   <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/>
                   <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"/>
                 </svg>
-                {art.badge}
+                {latestArticle.data.categorie}
               </span>
-              <time class="text-xs" style="color: var(--c-muted);" datetime={art.datetime}>{art.date}</time>
+              <time class="text-xs" style="color: var(--c-muted);" datetime={latestArticle.data.date.toISOString()}>
+                {fmtDate(latestArticle.data.date)}
+              </time>
             </div>
-            <h3 id={`card-title-${art.id}`} class="text-xl sm:text-2xl font-bold mb-3 leading-tight" style="color: var(--c-primary);">
-              {art.title}
+            <h3 id="card-title-latest" class="text-xl sm:text-2xl font-bold mb-3 leading-tight" style="color: var(--c-primary);">
+              {latestArticle.data.title}
             </h3>
             <p class="leading-relaxed text-sm sm:text-base" style="color: var(--c-muted);">
-              {art.intro}
+              {latestArticle.data.description}
             </p>
-            <ul class="mt-3 space-y-1.5">
-              {art.bullets.map((b) => (
-                <li class="flex items-start gap-2 text-xs" style="color: var(--c-muted);">
-                  <span class="mt-1 w-1.5 h-1.5 rounded-full flex-shrink-0" style="background: var(--c-secondary);"></span>
-                  {b}
-                </li>
-              ))}
-            </ul>
           </div>
-          <button
-            class="modal-trigger mt-6 self-start link-primary inline-flex items-center gap-2 text-sm hover:gap-3 transition-all duration-200 bg-transparent border-0 p-0 cursor-pointer font-semibold"
-            data-article={art.id}
-            aria-haspopup="dialog"
-            aria-controls={`dialog-${art.id}`}
+          <a
+            href={`/actualites/${latestArticle.slug}`}
+            class="modal-trigger mt-6 self-start link-primary inline-flex items-center gap-2 text-sm hover:gap-3 transition-all duration-200 font-semibold"
           >
             Lire la suite
             <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>
-          </button>
+          </a>
         </article>
-      ))}
+      ) : (
+        <article
+          class="bento-card sm:col-span-2 lg:col-span-2 lg:row-span-2 bg-white dark:bg-kienheim-dark-surface shadow-sm p-6 flex flex-col justify-center items-center reveal"
+          style="border: 1px solid var(--c-border);"
+        >
+          <p class="text-sm" style="color: var(--c-muted);">Aucune actualité pour le moment.</p>
+        </article>
+      )}
 
       <!-- Carte 2 : Prochain événement -->
       <article
@@ -104,16 +103,24 @@ const articles = [
             </svg>
             <span class="text-xs font-semibold uppercase tracking-wider" style="color: var(--c-muted);">Événement</span>
           </div>
-          <div class="flex items-baseline gap-2 mb-1">
-            <span class="text-4xl font-black" style="color: var(--c-primary);">20</span>
-            <span class="text-lg font-bold" style="color: var(--c-fg);">Avr. 2026</span>
-          </div>
-          <h3 id="event-title" class="text-base font-bold mt-1" style="color: var(--c-fg);">
-            Fête du Printemps
-          </h3>
-          <p class="text-xs mt-1" style="color: var(--c-muted);">Place de la Mairie • 14h–22h</p>
+          {nextEvent ? (
+            <>
+              <div class="flex items-baseline gap-2 mb-1">
+                <span class="text-4xl font-black" style="color: var(--c-primary);">{fmtDay(nextEvent.data.date_debut)}</span>
+                <span class="text-lg font-bold" style="color: var(--c-fg);">{fmtMon(nextEvent.data.date_debut)}</span>
+              </div>
+              <h3 id="event-title" class="text-base font-bold mt-1" style="color: var(--c-fg);">
+                {nextEvent.data.title}
+              </h3>
+              {nextEvent.data.lieu && (
+                <p class="text-xs mt-1" style="color: var(--c-muted);">{nextEvent.data.lieu}</p>
+              )}
+            </>
+          ) : (
+            <p class="text-sm mt-2" style="color: var(--c-muted);">Aucun événement prévu.</p>
+          )}
         </div>
-        <a href="#" class="mt-3 text-xs font-semibold hover:underline link-primary">
+        <a href="/evenements" class="mt-3 text-xs font-semibold hover:underline link-primary">
           Tous les événements →
         </a>
       </article>
@@ -234,271 +241,34 @@ const articles = [
             MAG
           </div>
           <h3 id="mag-title" class="text-base font-bold" style="color: var(--c-primary);">KienheiMAG</h3>
-          <p class="text-xs mt-1" style="color: var(--c-muted);">Bulletin municipal trimestriel</p>
+          {lastBulletin ? (
+            <p class="text-xs mt-1" style="color: var(--c-muted);">
+              N°{lastBulletin.data.numero} — {lastBulletin.data.title}
+            </p>
+          ) : (
+            <p class="text-xs mt-1" style="color: var(--c-muted);">Bulletin municipal trimestriel</p>
+          )}
         </div>
-        <a href="#" class="btn-accent mt-3 self-start">
-          <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-          </svg>
-          Télécharger
-        </a>
+        {lastBulletin ? (
+          <a href={lastBulletin.data.fichier_pdf} class="btn-accent mt-3 self-start" target="_blank" rel="noopener">
+            <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+            </svg>
+            Télécharger
+          </a>
+        ) : (
+          <a href="#" class="btn-accent mt-3 self-start">
+            <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+            </svg>
+            Télécharger
+          </a>
+        )}
       </article>
 
     </div>
   </div>
 </section>
-
-<!-- ── Modales articles ─────────────────────────────────────────────── -->
-{articles.map((art) => (
-  <dialog
-    id={`dialog-${art.id}`}
-    class="article-dialog"
-    aria-labelledby={`dialog-title-${art.id}`}
-    aria-modal="true"
-  >
-    <!-- Backdrop (clic → ferme) -->
-    <div class="dialog-backdrop" aria-hidden="true"></div>
-
-    <!-- Panel -->
-    <div class="dialog-panel" role="document">
-
-      <!-- Image placeholder -->
-      <div class="dialog-img" aria-hidden="true">
-        <div class="dialog-img-inner">
-          <svg class="w-12 h-12 text-white/40" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1" aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-          </svg>
-          <span class="text-white/30 text-sm tracking-widest uppercase mt-2">Photo à venir</span>
-        </div>
-      </div>
-
-      <!-- Close button -->
-      <button
-        class="dialog-close"
-        aria-label="Fermer cet article"
-        data-close={`dialog-${art.id}`}
-      >
-        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-        </svg>
-      </button>
-
-      <!-- Content -->
-      <div class="dialog-content">
-        <div class="dialog-meta">
-          <span class="badge-secondary">{art.badge}</span>
-          <time class="dialog-date" datetime={art.datetime}>{art.date}</time>
-        </div>
-        <h2 id={`dialog-title-${art.id}`} class="dialog-title">{art.title}</h2>
-        <div class="dialog-body" set:html={art.body} />
-      </div>
-    </div>
-  </dialog>
-))}
-
-<style>
-  /* ── Dialog reset + backdrop ──────────────────────────────── */
-  .article-dialog {
-    /* Reset navigateur */
-    border: none;
-    padding: 0;
-    margin: 0;
-    background: transparent;
-    max-width: 100vw;
-    max-height: 100vh;
-    width: 100%;
-    height: 100%;
-    overflow: visible;
-
-    /* Plein écran pour gérer le layout nous-mêmes */
-    position: fixed;
-    inset: 0;
-
-    /* Caché par défaut (avant showModal) */
-    display: none;
-    align-items: center;
-    justify-content: center;
-
-    /* Transitions globales */
-    opacity: 0;
-    transition: opacity 0.25s ease;
-  }
-
-  /* Quand ouvert via showModal(), le navigateur retire display:none
-     mais on l'override pour flex + gestion de l'animation */
-  .article-dialog[open] {
-    display: flex;
-  }
-
-  /* Backdrop natif <dialog> supprimé, on utilise le nôtre */
-  .article-dialog::backdrop {
-    display: none;
-  }
-
-  /* Notre backdrop custom */
-  .dialog-backdrop {
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.60);
-    cursor: pointer;
-    z-index: 0;
-  }
-
-  /* ── Panel ────────────────────────────────────────────────── */
-  .dialog-panel {
-    position: relative;
-    z-index: 1;
-    background: #fff;
-    border-radius: 1rem;
-    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.30);
-    width: min(720px, calc(100vw - 2rem));
-    max-height: calc(100vh - 2rem);
-    overflow-y: auto;
-    display: flex;
-    flex-direction: column;
-
-    /* Animation d'entrée : part légèrement en-dessous + petit scale */
-    transform: scale(0.94) translateY(16px);
-    transition: transform 0.30s cubic-bezier(0.34, 1.20, 0.64, 1), opacity 0.25s ease;
-    opacity: 0;
-  }
-
-  @media (prefers-color-scheme: dark) {
-    .dialog-panel { background: #1E2530; }
-  }
-  :global(.dark) .dialog-panel { background: #1E2530; }
-
-  /* Mobile : plein écran */
-  @media (max-width: 640px) {
-    .dialog-panel {
-      width: 100vw;
-      max-height: 100vh;
-      border-radius: 0;
-      margin: 0;
-    }
-    .article-dialog[open] {
-      align-items: flex-end;
-    }
-    .dialog-panel {
-      transform: scale(1) translateY(30px);
-    }
-  }
-
-  /* State "visible" appliqué par JS après showModal */
-  .article-dialog.is-open {
-    opacity: 1;
-  }
-  .article-dialog.is-open .dialog-panel {
-    transform: scale(1) translateY(0);
-    opacity: 1;
-  }
-
-  /* Animation de fermeture */
-  .article-dialog.is-closing {
-    opacity: 0;
-  }
-  .article-dialog.is-closing .dialog-panel {
-    transform: scale(0.96) translateY(10px);
-    opacity: 0;
-  }
-
-  /* ── Image placeholder ──────────────────────────────────────*/
-  .dialog-img {
-    width: 100%;
-    height: 200px;
-    border-radius: 1rem 1rem 0 0;
-    overflow: hidden;
-    flex-shrink: 0;
-  }
-  @media (min-width: 640px) {
-    .dialog-img { height: 260px; }
-  }
-  .dialog-img-inner {
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(135deg, #2B4C6F 0%, #5C7A56 100%);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-
-  /* ── Bouton fermer ──────────────────────────────────────────*/
-  .dialog-close {
-    position: absolute;
-    top: 0.75rem;
-    right: 0.75rem;
-    z-index: 10;
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    border: none;
-    background: rgba(255, 255, 255, 0.18);
-    backdrop-filter: blur(8px);
-    color: #fff;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background 0.2s, color 0.2s;
-  }
-  .dialog-close:hover {
-    background: rgba(255, 255, 255, 0.32);
-  }
-  .dialog-close:focus-visible {
-    outline: 3px solid #C9A84C;
-    outline-offset: 2px;
-  }
-
-  /* ── Contenu ────────────────────────────────────────────────*/
-  .dialog-content {
-    padding: 1.75rem 2rem 2.5rem;
-    flex: 1;
-  }
-  @media (max-width: 640px) {
-    .dialog-content { padding: 1.25rem 1.25rem 2rem; }
-  }
-
-  .dialog-meta {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    margin-bottom: 0.875rem;
-  }
-
-  .dialog-date {
-    font-size: 0.75rem;
-    color: var(--c-muted);
-  }
-
-  .dialog-title {
-    font-size: clamp(1.2rem, 3vw, 1.6rem);
-    font-weight: 900;
-    line-height: 1.25;
-    color: var(--c-primary);
-    margin: 0 0 1.25rem;
-  }
-
-  /* Contenu riche de la modale */
-  .dialog-body {
-    font-size: 0.9375rem;
-    line-height: 1.7;
-    color: var(--c-muted);
-  }
-  .dialog-body p {
-    margin: 0 0 1rem;
-  }
-  .dialog-body h3 {
-    font-size: 1rem;
-    font-weight: 700;
-    color: var(--c-primary);
-    margin: 1.5rem 0 0.5rem;
-  }
-  .dialog-body strong {
-    font-weight: 700;
-    color: var(--c-fg);
-  }
-</style>
 
 <script>
   // ── Compteur animé ────────────────────────────────────────────
@@ -527,121 +297,4 @@ const articles = [
     );
     observer.observe(counterEl);
   }
-
-  // ── Gestion des modales ───────────────────────────────────────
-
-  // Éléments focusables dans un dialog
-  const FOCUSABLE = [
-    'a[href]',
-    'button:not([disabled])',
-    'input:not([disabled])',
-    'select:not([disabled])',
-    'textarea:not([disabled])',
-    '[tabindex]:not([tabindex="-1"])',
-  ].join(',');
-
-  function getFocusable(dialog: HTMLDialogElement) {
-    return Array.from(dialog.querySelectorAll<HTMLElement>(FOCUSABLE));
-  }
-
-  function trapFocus(dialog: HTMLDialogElement, e: KeyboardEvent) {
-    const els = getFocusable(dialog);
-    if (!els.length) return;
-    const first = els[0];
-    const last = els[els.length - 1];
-    if (e.key === 'Tab') {
-      if (e.shiftKey) {
-        if (document.activeElement === first) { e.preventDefault(); last.focus(); }
-      } else {
-        if (document.activeElement === last) { e.preventDefault(); first.focus(); }
-      }
-    }
-  }
-
-  let currentDialog: HTMLDialogElement | null = null;
-  let triggerEl: HTMLElement | null = null;
-  let trapHandler: ((e: KeyboardEvent) => void) | null = null;
-
-  function openDialog(dialog: HTMLDialogElement, trigger: HTMLElement) {
-    triggerEl = trigger;
-    currentDialog = dialog;
-
-    dialog.showModal();
-    document.body.style.overflow = 'hidden';
-
-    // Déclenche l'animation d'entrée (un frame après showModal pour que
-    // la transition CSS se joue correctement)
-    requestAnimationFrame(() => {
-      requestAnimationFrame(() => dialog.classList.add('is-open'));
-    });
-
-    // Focus sur le bouton fermer
-    const closeBtn = dialog.querySelector<HTMLElement>('.dialog-close');
-    closeBtn?.focus();
-
-    // Trap focus
-    trapHandler = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') { closeDialog(dialog); return; }
-      trapFocus(dialog, e);
-    };
-    dialog.addEventListener('keydown', trapHandler);
-  }
-
-  function closeDialog(dialog: HTMLDialogElement) {
-    dialog.classList.remove('is-open');
-    dialog.classList.add('is-closing');
-
-    // Durée = 200ms (transition CSS)
-    setTimeout(() => {
-      dialog.classList.remove('is-closing');
-      dialog.close();
-      document.body.style.overflow = '';
-
-      // Rend le focus au déclencheur
-      triggerEl?.focus();
-      triggerEl = null;
-      currentDialog = null;
-
-      if (trapHandler) {
-        dialog.removeEventListener('keydown', trapHandler);
-        trapHandler = null;
-      }
-    }, 220);
-  }
-
-  // Délégation : boutons "Lire la suite"
-  document.querySelectorAll<HTMLButtonElement>('.modal-trigger').forEach((btn) => {
-    btn.addEventListener('click', () => {
-      const id = btn.dataset.article;
-      if (!id) return;
-      const dialog = document.getElementById(`dialog-${id}`) as HTMLDialogElement | null;
-      if (dialog) openDialog(dialog, btn);
-    });
-  });
-
-  // Boutons croix
-  document.querySelectorAll<HTMLButtonElement>('.dialog-close').forEach((btn) => {
-    btn.addEventListener('click', () => {
-      const id = btn.dataset.close;
-      if (!id) return;
-      const dialog = document.getElementById(id) as HTMLDialogElement | null;
-      if (dialog) closeDialog(dialog);
-    });
-  });
-
-  // Clic sur le backdrop
-  document.querySelectorAll<HTMLElement>('.dialog-backdrop').forEach((backdrop) => {
-    backdrop.addEventListener('click', () => {
-      const dialog = backdrop.closest('dialog') as HTMLDialogElement | null;
-      if (dialog) closeDialog(dialog);
-    });
-  });
-
-  // Empêche la fermeture native par Escape du navigateur (on gère nous-mêmes)
-  document.querySelectorAll<HTMLDialogElement>('.article-dialog').forEach((dialog) => {
-    dialog.addEventListener('cancel', (e) => {
-      e.preventDefault();
-      closeDialog(dialog);
-    });
-  });
 </script>
