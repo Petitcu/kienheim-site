@@ -1,0 +1,96 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+
+export async function getStaticPaths() {
+  const arretes = await getCollection('arretes');
+  return arretes.map((arrete) => ({
+    params: { slug: arrete.slug },
+    props: { arrete },
+  }));
+}
+
+const { arrete } = Astro.props;
+const { Content } = await arrete.render();
+
+const fmtDate = (d: Date) =>
+  d.toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' });
+---
+
+<Layout title={`${arrete.data.title} — Mairie de Kienheim`} description={arrete.data.description ?? arrete.data.title}>
+  <main id="main-content" class="max-w-3xl mx-auto px-4 sm:px-6 py-16 sm:py-24">
+
+    <a href="/" class="inline-flex items-center gap-2 text-sm font-semibold mb-8 link-primary">
+      <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+      </svg>
+      Retour à l'accueil
+    </a>
+
+    <div class="flex items-center gap-3 mb-4">
+      <span class="badge-secondary">{arrete.data.categorie ?? 'Arrêté municipal'}</span>
+      <time class="text-sm" style="color: var(--c-muted);" datetime={arrete.data.date.toISOString()}>
+        {fmtDate(arrete.data.date)}
+      </time>
+    </div>
+
+    <h1 class="text-3xl sm:text-4xl font-black mb-6 leading-tight" style="color: var(--c-primary);">
+      {arrete.data.title}
+    </h1>
+
+    {arrete.data.document_pdf && (
+      <a
+        href={arrete.data.document_pdf}
+        class="btn-accent mb-8 inline-flex"
+        target="_blank"
+        rel="noopener"
+      >
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+        </svg>
+        Télécharger le document PDF
+      </a>
+    )}
+
+    <div class="prose max-w-none" style="color: var(--c-fg);">
+      <Content />
+    </div>
+
+  </main>
+</Layout>
+
+<style>
+  .prose :global(h2) {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--c-primary);
+    margin: 2rem 0 0.75rem;
+  }
+  .prose :global(h3) {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--c-primary);
+    margin: 1.5rem 0 0.5rem;
+  }
+  .prose :global(p) {
+    margin: 0 0 1rem;
+    line-height: 1.75;
+  }
+  .prose :global(ul), .prose :global(ol) {
+    padding-left: 1.5rem;
+    margin: 0 0 1rem;
+  }
+  .prose :global(li) {
+    margin-bottom: 0.375rem;
+    line-height: 1.6;
+  }
+  .prose :global(strong) {
+    font-weight: 700;
+    color: var(--c-fg);
+  }
+  .prose :global(a) {
+    color: var(--c-primary);
+    font-weight: 600;
+    text-decoration: underline;
+  }
+</style>

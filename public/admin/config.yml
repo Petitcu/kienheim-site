@@ -118,6 +118,24 @@ collections:
       - { name: photo,     label: "Photo",               widget: image,    required: false,
           media_folder: /public/images/elus, public_folder: /images/elus }
 
+  # ── Arrêtés & Règlements ────────────────────────────────────────────
+  - name: arretes
+    label: "Arrêtés & Règlements"
+    label_singular: "Arrêté"
+    folder: src/content/arretes
+    create: true
+    slug: "{{year}}-{{month}}-{{slug}}"
+    fields:
+      - { name: title,        label: "Titre",                   widget: string,   required: true }
+      - { name: date,         label: "Date",                    widget: datetime, required: true,
+          date_format: "DD/MM/YYYY", time_format: false, format: "YYYY-MM-DD" }
+      - { name: categorie,    label: "Catégorie",               widget: string,   required: false,
+          default: "Arrêté municipal" }
+      - { name: document_pdf, label: "PDF de l'arrêté",         widget: file,     required: false,
+          media_folder: /public/documents/arretes,
+          public_folder: /documents/arretes }
+      - { name: body,         label: "Contenu",                 widget: markdown, required: false }
+
   # ── Pages fixes ─────────────────────────────────────────────────────
   - name: pages
     label: Pages du site

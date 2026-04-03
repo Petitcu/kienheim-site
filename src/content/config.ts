@@ -6,9 +6,17 @@ const actualites = defineCollection({
   schema: z.object({
     title:       z.string(),
     date:        z.coerce.date(),
-    description: z.string(),
-    categorie:   z.enum(['Information', 'Événement', 'Travaux', 'Associations']),
+    description: z.string().optional().default(''),
+    categorie:   z.enum([
+      // Catégories CMS (nouvelles)
+      'Information', 'Événement', 'Travaux', 'Associations',
+      // Catégories migrées (ancien site)
+      'Kienheim Flash', 'Vie associative', 'Vie économique',
+      'Vie pratique', 'Histoire', 'Éducation', 'Jeunesse',
+      'Archives', 'Agenda', 'Divers',
+    ]),
     image:       z.string().optional(),
+    source_url:  z.string().optional(),
   }),
 });
 
@@ -32,6 +40,7 @@ const conseil = defineCollection({
     title:        z.string(),
     date:         z.coerce.date(),
     document_pdf: z.string().optional(),
+    source_url:   z.string().optional(),
   }),
 });
 
@@ -44,6 +53,20 @@ const bulletins = defineCollection({
     date:             z.coerce.date(),
     fichier_pdf:      z.string(),
     image_couverture: z.string().optional(),
+    source_url:       z.string().optional(),
+  }),
+});
+
+// ── Arrêtés & Règlements ─────────────────────────────────────────────
+const arretes = defineCollection({
+  type: 'content',
+  schema: z.object({
+    title:        z.string(),
+    date:         z.coerce.date(),
+    document_pdf: z.string().optional(),
+    categorie:    z.string().optional().default('Arrêté municipal'),
+    description:  z.string().optional(),
+    source_url:   z.string().optional(),
   }),
 });
 
@@ -79,6 +102,7 @@ export const collections = {
   evenements,
   conseil,
   bulletins,
+  arretes,
   elus,
   pages,
 };
