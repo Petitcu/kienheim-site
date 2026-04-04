@@ -3,7 +3,7 @@ title: "2e édition des jeux inter-villages du Kochersberg"
 date: "2017-07-22"
 description: "Cette année, quelques jeunes de la commission « jeunesse » de la Communauté de Communes Kochersberg-Ackerland (CCKA), rassemblés au sein de l’association « Konnexion Jeunesse » ont organisé une deuxième édition des Jeux Intervillages.  En 2017, il a été décidé que cet événement s"
 categorie: "Jeunesse"
-image: "/images/uploads/b56c24e2ca2f0c030f2493377353ed.jpg"
+image: "/images/uploads/actualites/b56c24e2ca2f0c030f2493377353ed.jpg"
 source_url: "https://www.kienheim.fr/2eme-edition-des-jeux-inter-villages-du-Kochersberg"
 ---
 
@@ -35,16 +35,16 @@ Laureen et Mérédith Mangin, Ella Kistner
 
 ### Portfolio
 
--   [![« le ventre qui glisse »](/images/b56c24e2ca2f0c030f2493377353ed.jpg)](IMG/jpg/jeuxa.jpg "« le ventre qui glisse »")
--   [![](/images/c6ab521c5e8dddcb066bea875d5c61.jpg)](IMG/jpg/jeuxb.jpg)
--   [![tir Ã la corde Ã 2](/images/b2a1cb402c5e6c3ea47cb4b8fbf705.jpg)](IMG/jpg/jeuxc.jpg "tir àla corde à2")
--   [![Course de coordination avec un seau d'eau](/images/907d925b0de20d11058c9488e99e28.jpg)](IMG/jpg/jeuxd.jpg "Course de coordination avec un seau d'eau")
--   [![Course dÃ©sorientÃ©e](/images/584ef850a3763bebff97ebe9e77f86.jpg)](IMG/jpg/jeuxe.jpg "Course désorientée")
--   [![la photo de l'Ã©quipe des indiens](/images/00c950c2d39ce7b4421eedd79e043c.jpg)](IMG/jpg/jeuxf.jpg "la photo de l'équipe des indiens")
--   [![combat de sumos](/images/dba17168fe2c4dfd7095161e0c4363.jpg)](IMG/jpg/jeuxg.jpg "combat de sumos")
--   [![Parcours du combattant](/images/3ea78098fe8241ee7dde5fea4ea0f0.jpg)](IMG/jpg/jeuxh.jpg "Parcours du combattant")
--   [![Parcours du combattant](/images/cbdde9bc365fa5c70cf457b7d0c75f.jpg)](IMG/jpg/jeuxi.jpg "Parcours du combattant")
--   [![Parcours du combattant](/images/a8552eb1fafda180d2d6e8afeef52d.jpg)](IMG/jpg/jeuxj.jpg "Parcours du combattant")
--   [![Remise des prix](/images/a0a4c30f253222d92dfbbc907f900b.jpg)](IMG/jpg/jeuxk.jpg "Remise des prix")
--   [![l'Ã©quipe des indiens classÃ©e 2Ã¨me !](/images/2f4b6ec2503280f3793f7e23546117.jpg)](IMG/jpg/jeuxl.jpg "l'équipe des indiens classée 2ème !")
--   [![les 11 Ã©quipes inscrites](/images/17b2a3a0604580b4dbcd7d293d2a47.jpg)](IMG/jpg/jeuxm.jpg "les 11 équipes inscrites")
+-   [![« le ventre qui glisse »](/images/uploads/actualites/b56c24e2ca2f0c030f2493377353ed.jpg)](IMG/jpg/jeuxa.jpg "« le ventre qui glisse »")
+-   [![](/images/uploads/actualites/c6ab521c5e8dddcb066bea875d5c61.jpg)](IMG/jpg/jeuxb.jpg)
+-   [![tir Ã la corde Ã 2](/images/uploads/actualites/b2a1cb402c5e6c3ea47cb4b8fbf705.jpg)](IMG/jpg/jeuxc.jpg "tir àla corde à2")
+-   [![Course de coordination avec un seau d'eau](/images/uploads/actualites/907d925b0de20d11058c9488e99e28.jpg)](IMG/jpg/jeuxd.jpg "Course de coordination avec un seau d'eau")
+-   [![Course dÃ©sorientÃ©e](/images/uploads/actualites/584ef850a3763bebff97ebe9e77f86.jpg)](IMG/jpg/jeuxe.jpg "Course désorientée")
+-   [![la photo de l'Ã©quipe des indiens](/images/uploads/actualites/00c950c2d39ce7b4421eedd79e043c.jpg)](IMG/jpg/jeuxf.jpg "la photo de l'équipe des indiens")
+-   [![combat de sumos](/images/uploads/actualites/dba17168fe2c4dfd7095161e0c4363.jpg)](IMG/jpg/jeuxg.jpg "combat de sumos")
+-   [![Parcours du combattant](/images/uploads/actualites/3ea78098fe8241ee7dde5fea4ea0f0.jpg)](IMG/jpg/jeuxh.jpg "Parcours du combattant")
+-   [![Parcours du combattant](/images/uploads/actualites/cbdde9bc365fa5c70cf457b7d0c75f.jpg)](IMG/jpg/jeuxi.jpg "Parcours du combattant")
+-   [![Parcours du combattant](/images/uploads/actualites/a8552eb1fafda180d2d6e8afeef52d.jpg)](IMG/jpg/jeuxj.jpg "Parcours du combattant")
+-   [![Remise des prix](/images/uploads/actualites/a0a4c30f253222d92dfbbc907f900b.jpg)](IMG/jpg/jeuxk.jpg "Remise des prix")
+-   [![l'Ã©quipe des indiens classÃ©e 2Ã¨me !](/images/uploads/actualites/2f4b6ec2503280f3793f7e23546117.jpg)](IMG/jpg/jeuxl.jpg "l'équipe des indiens classée 2ème !")
+-   [![les 11 Ã©quipes inscrites](/images/uploads/actualites/17b2a3a0604580b4dbcd7d293d2a47.jpg)](IMG/jpg/jeuxm.jpg "les 11 équipes inscrites")

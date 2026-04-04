@@ -3,7 +3,7 @@ title: "Préparatifs du Raid 4L Trophy"
 date: "2017-03-22"
 description: "Le Raid 4L Trophy a lieu chaque année.  Les participants (environ deux mille étudiants âgés de 18 à 28 ans) disputent cette course d’orientation, réalisée exclusivement en Renault 4L."
 categorie: "Jeunesse"
-image: "/images/uploads/2524a33cdd9e4c734d452ed51f7efb.jpg"
+image: "/images/uploads/actualites/2524a33cdd9e4c734d452ed51f7efb.jpg"
 source_url: "https://www.kienheim.fr/Preparatifs-du-Raid-4L-Trophy"
 ---
 
@@ -26,11 +26,11 @@ et son coéquipier Jack Missimilly
 
 ### Portfolio
 
--   [![](/images/2524a33cdd9e4c734d452ed51f7efb.jpg)](IMG/jpg/kienheim_1.jpg)
--   [![](/images/e356c981c80568a2fa81129fc698ef.jpg)](IMG/jpg/kienheim_2.jpg)
--   [![](/images/8a874a622ba75694003d4ee442860a.jpg)](IMG/jpg/kienheim_3.jpg)
--   [![](/images/6bce96f7781cba8ff35f296703d031.jpg)](IMG/jpg/kienheim_4.jpg)
--   [![](/images/52f9383d0b3b71aa9f4a9c8101ec8b.jpg)](IMG/jpg/kienheim_9.jpg)
--   [![](/images/70485b6ebc642af2e34a2ff5f45d77.jpg)](IMG/jpg/kienheim_12.jpg)
--   [![Pose du blason de Kienheim sur notre 4L !](/images/67d16a98e37fd0b92c0454f0a57cdf.jpg)](IMG/jpg/kienheim_13.jpg "Pose du blason de Kienheim sur notre 4L !")
--   [![prÃªts pour le dÃ©part !](/images/7de67ecbe868e873ca29911d62f114.jpg)](IMG/jpg/36426838bis.jpg "prêts pour le départ !")
+-   [![](/images/uploads/actualites/2524a33cdd9e4c734d452ed51f7efb.jpg)](IMG/jpg/kienheim_1.jpg)
+-   [![](/images/uploads/actualites/e356c981c80568a2fa81129fc698ef.jpg)](IMG/jpg/kienheim_2.jpg)
+-   [![](/images/uploads/actualites/8a874a622ba75694003d4ee442860a.jpg)](IMG/jpg/kienheim_3.jpg)
+-   [![](/images/uploads/actualites/6bce96f7781cba8ff35f296703d031.jpg)](IMG/jpg/kienheim_4.jpg)
+-   [![](/images/uploads/actualites/52f9383d0b3b71aa9f4a9c8101ec8b.jpg)](IMG/jpg/kienheim_9.jpg)
+-   [![](/images/uploads/actualites/70485b6ebc642af2e34a2ff5f45d77.jpg)](IMG/jpg/kienheim_12.jpg)
+-   [![Pose du blason de Kienheim sur notre 4L !](/images/uploads/actualites/67d16a98e37fd0b92c0454f0a57cdf.jpg)](IMG/jpg/kienheim_13.jpg "Pose du blason de Kienheim sur notre 4L !")
+-   [![prÃªts pour le dÃ©part !](/images/uploads/actualites/7de67ecbe868e873ca29911d62f114.jpg)](IMG/jpg/36426838bis.jpg "prêts pour le départ !")

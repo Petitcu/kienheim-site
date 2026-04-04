@@ -3,7 +3,7 @@ title: "Première Assemblée Générale pour Damien Handicap le 17 juin 2016 et 
 date: "2016-07-11"
 description: "Source : les Dernières Nouvelles d’Alsace du 30/06/2016 par R. D."
 categorie: "Vie associative"
-image: "/images/uploads/arenz-01-ac03a.jpg"
+image: "/images/uploads/actualites/arenz-01-ac03a.jpg"
 source_url: "https://www.kienheim.fr/Premiere-Assemblee-Generale-pour-Damien-Handicap-le-17-juin-2016-et-nouvelles"
 ---
 
@@ -25,10 +25,10 @@ Cyril Hausser, président de l’association « Bouchons de l’Espoir 67 », 
 
 _Marie-Odile, Présidente de l’association « les escales des 3 villages » remet un don de 800 € à l’association Damien Handicap :_
 
-![](/images/arenz-01-ac03a.jpg)
+![](/images/uploads/actualites/arenz-01-ac03a.jpg)
 
   
 
 _Remise d’un chèque de 1.000 € à Raïssa par l’association Damien Handicap :_
 
-![](/images/arenz-02-9e967.jpg)
+![](/images/uploads/actualites/arenz-02-9e967.jpg)

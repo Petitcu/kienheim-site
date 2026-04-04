@@ -3,7 +3,7 @@ title: "Assemblée Générale de Damien Handicap le 7 avril 2017 et remise de de
 date: "2017-04-13"
 description: "Source : les Dernières Nouvelles d’Alsace du 11/04/2017 par J. K."
 categorie: "Vie associative"
-image: "/images/uploads/0d77e01f2987a8ef0bbda3b4ebf98a.jpg"
+image: "/images/uploads/actualites/0d77e01f2987a8ef0bbda3b4ebf98a.jpg"
 source_url: "https://www.kienheim.fr/Assemblee-Generale-de-Damien-Handicap-le-7-avril-2017-et-remise-de-deux-cheques"
 ---
 
@@ -21,8 +21,8 @@ La présidente de Damien handicap, très émue a remis un premier chèque de 2 0
 
 ### Portfolio
 
--   [![Discours de Fabienne Arenz, PrÃ©sidente](/images/0d77e01f2987a8ef0bbda3b4ebf98a.jpg)](IMG/jpg/damien_handicap_2017_04_07a.jpg "Discours de Fabienne Arenz, Présidente")
--   [![Discours de StÃ©phane Fischer, vice-PrÃ©sident](/images/b17ad65a4aa57664edb96050c95250.jpg)](IMG/jpg/damien_handicap_2017_04_07b.jpg "Discours de Stéphane Fischer, vice-Président")
--   [![Intervention du maire de Kienheim, Luc Ginsz](/images/6668207521b954cabb3de2fc2cc5dc.jpg)](IMG/jpg/damien_handicap_2017_04_07c.jpg "Intervention du maire de Kienheim, Luc Ginsz")
--   [![MattÃ©o entourÃ© de son papa et de Fabienne Arenz](/images/1b9398a23fef18ad4d67541eaebded.jpg)](IMG/jpg/damien_handicap_2017_04_07d.jpg "Mattéo entouré de son papa et de Fabienne Arenz")
--   [![Patrick Wissen reprÃ©sentant l'association Handi'chiens](/images/bb2c796a288e1bc577cef36f62e538.jpg)](IMG/jpg/damien_handicap_2017_04_07e.jpg "Patrick Wissen représentant l'association Handi'chiens")
+-   [![Discours de Fabienne Arenz, PrÃ©sidente](/images/uploads/actualites/0d77e01f2987a8ef0bbda3b4ebf98a.jpg)](IMG/jpg/damien_handicap_2017_04_07a.jpg "Discours de Fabienne Arenz, Présidente")
+-   [![Discours de StÃ©phane Fischer, vice-PrÃ©sident](/images/uploads/actualites/b17ad65a4aa57664edb96050c95250.jpg)](IMG/jpg/damien_handicap_2017_04_07b.jpg "Discours de Stéphane Fischer, vice-Président")
+-   [![Intervention du maire de Kienheim, Luc Ginsz](/images/uploads/actualites/6668207521b954cabb3de2fc2cc5dc.jpg)](IMG/jpg/damien_handicap_2017_04_07c.jpg "Intervention du maire de Kienheim, Luc Ginsz")
+-   [![MattÃ©o entourÃ© de son papa et de Fabienne Arenz](/images/uploads/actualites/1b9398a23fef18ad4d67541eaebded.jpg)](IMG/jpg/damien_handicap_2017_04_07d.jpg "Mattéo entouré de son papa et de Fabienne Arenz")
+-   [![Patrick Wissen reprÃ©sentant l'association Handi'chiens](/images/uploads/actualites/bb2c796a288e1bc577cef36f62e538.jpg)](IMG/jpg/damien_handicap_2017_04_07e.jpg "Patrick Wissen représentant l'association Handi'chiens")

@@ -3,7 +3,7 @@ title: "Assemblée Générale de Damien Handicap le 12 avril 2019 et remise de 9
 date: "2019-04-25"
 description: "Source : les Dernières Nouvelles d’Alsace du 17/04/2019 par J. K."
 categorie: "Vie associative"
-image: "/images/uploads/ag_dons_dh-0381d.jpg"
+image: "/images/uploads/actualites/ag_dons_dh-0381d.jpg"
 source_url: "https://www.kienheim.fr/Assemblee-Generale-de-Damien-Handicap-le-12-avril-2019-et-remise-de-9-636-EUR"
 ---
 
@@ -22,4 +22,4 @@ Pour permettre ces dons, Fabienne et Francis Arenz, responsables de Damien Handi
 
 Ã€ l’issue de la cérémonie, avant le verre de l’amitié, le Club du Bel Age a également fait un don à l’association. "
 
-[![](/images/ag_dons_dh-0381d.jpg)](IMG/jpg/ag_dons_dh.jpg)
+[![](/images/uploads/actualites/ag_dons_dh-0381d.jpg)](IMG/jpg/ag_dons_dh.jpg)

@@ -3,25 +3,25 @@ title: "Soutenons Nos Producteurs Locaux"
 date: "2020-05-06"
 description: "AMAP de Kienheim : en savoir +...  Ferme St-Ulrich à Durningen      [](IMG/pdf/fermestulrich."
 categorie: "Vie économique"
-image: "/images/uploads/ferme_st_ulrich-2-65539.jpg"
+image: "/images/uploads/actualites/ferme_st_ulrich-2-65539.jpg"
 source_url: "https://www.kienheim.fr/Soutenons-Nos-Producteurs-Locaux"
 ---
 
 ![](local/cache-vignettes/L184xH207/saveurs_logo-a3fb8.png?1695185507)
 
-**AMAP de Kienheim** : [en savoir +...](https://www.lessaveursdekienheim.fr/spip/spip.php?page=index)
+**AMAP de Kienheim** : en savoir +...
 
 **Ferme St\-Ulrich à Durningen**  
   
 
-[![](/images/ferme_st_ulrich-2-65539.jpg)](IMG/pdf/ferme_st_ulrich.pdf "PDF - 633.1 kio")
+[![](/images/uploads/actualites/ferme_st_ulrich-2-65539.jpg)](IMG/pdf/ferme_st_ulrich.pdf "PDF - 633.1 kio")
 
 **Ferme St Ulrich - Durningen**
 
 **Guide des producteurs locaux \[[1](#nb2-1 "© ComCom")\]**  
 Les producteurs du Kochersberg et de l’Ackerland vous invitent à découvrir leurs produits.  
 
-[![](/images/guide_des_producteurs_locaux-ead39.jpg)](IMG/pdf/guide_des_producteurs_locaux_web.pdf "PDF - 8.1 Mio")
+[![](/images/uploads/actualites/guide_des_producteurs_locaux-ead39.jpg)](IMG/pdf/guide_des_producteurs_locaux_web.pdf "PDF - 8.1 Mio")
 
 **Les producteurs de la ComCom**
 

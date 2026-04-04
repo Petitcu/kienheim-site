@@ -3,7 +3,7 @@ title: "1ers Jeux Intervillages du Kochersberg organisés par les jeunes"
 date: "2017-01-08"
 description: "Le 27 août dernier ont eu lieu les 1er jeux Intervillages du Kochersberg, organisés par l’association Konnexion Jeunesse et quelques membres du Conseil Communautaire des Jeunes.  Cet évènement s’est déroulé à Quatzenheim."
 categorie: "Jeunesse"
-image: "/images/uploads/ebedf2138c592a3925c3771297fc47.jpg"
+image: "/images/placeholder.svg"
 source_url: "https://www.kienheim.fr/1ers-Jeux-Intervillages-du-Kochersberg-organises-par-les-jeunes"
 ---
 
@@ -22,5 +22,5 @@ L’équipe Jeux Intervillages
 
 ### Portfolio
 
--   [![](/images/ebedf2138c592a3925c3771297fc47.jpg)](IMG/jpg/tournoi_intervillages_01bis.jpg)
--   [![](/images/d999c23462e24bed0d30f7f4426d30.jpg)](IMG/jpg/tournoi_intervillages_02bis.jpg)
+-   [![](/images/uploads/actualites/ebedf2138c592a3925c3771297fc47.jpg)](IMG/jpg/tournoi_intervillages_01bis.jpg)
+-   [![](/images/uploads/actualites/d999c23462e24bed0d30f7f4426d30.jpg)](IMG/jpg/tournoi_intervillages_02bis.jpg)

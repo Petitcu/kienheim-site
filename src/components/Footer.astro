@@ -1,11 +1,11 @@
 ---
 const quickLinks = [
-  { label: 'Accueil',             href: '#accueil' },
-  { label: 'Dernières actualités',href: '#apercu' },
-  { label: 'Découvrir le village',href: '#decouvrir' },
-  { label: 'Conseil municipal',   href: '#conseil' },
-  { label: 'Vie pratique',        href: '#vie-pratique' },
-  { label: 'KienheiMAG',          href: '#' },
+  { label: 'Accueil',             href: '/' },
+  { label: 'Dernières actualités',href: '/vivre' },
+  { label: 'Découvrir le village',href: '/village' },
+  { label: 'Conseil municipal',   href: '/mairie#comptes-rendus' },
+  { label: 'Vie pratique',        href: '/vivre' },
+  { label: 'KienheiMAG',          href: '/vivre' },
 ];
 ---
 
@@ -84,12 +84,12 @@ const quickLinks = [
           <h3 class="text-white font-bold text-sm tracking-widest uppercase mb-3">Ressources utiles</h3>
           <ul class="space-y-2" role="list">
             <li>
-              <a href="https://www.service-public.fr" target="_blank" rel="noopener noreferrer" class="text-sm hover:text-white transition-colors" style="color: rgba(208,216,228,0.70);">
+              <a href="https://www.service-public.gouv.fr" target="_blank" rel="noopener noreferrer" class="text-sm hover:text-white transition-colors" style="color: rgba(208,216,228,0.70);">
                 service-public.fr ↗
               </a>
             </li>
             <li>
-              <a href="https://www.bas-rhin.fr" target="_blank" rel="noopener noreferrer" class="text-sm hover:text-white transition-colors" style="color: rgba(208,216,228,0.70);">
+              <a href="https://www.alsace.eu" target="_blank" rel="noopener noreferrer" class="text-sm hover:text-white transition-colors" style="color: rgba(208,216,228,0.70);">
                 Département du Bas-Rhin ↗
               </a>
             </li>
@@ -106,13 +106,13 @@ const quickLinks = [
           <p class="text-white font-bold text-base">Kochersberg–<br />Ackerland</p>
           <p class="text-xs mt-1" style="color: rgba(208,216,228,0.50);">Bas-Rhin · 67370</p>
           <a
-            href="https://www.cc-kochersberg.fr"
+            href="https://www.kochersberg.fr"
             target="_blank"
             rel="noopener noreferrer"
             class="mt-3 inline-block text-xs font-semibold hover:underline"
             style="color: #C9A84C;"
           >
-            www.cc-kochersberg.fr ↗
+            www.kochersberg.fr ↗
           </a>
         </div>
 
@@ -127,10 +127,10 @@ const quickLinks = [
       <p>© 2026 Commune de Kienheim — Tous droits réservés</p>
       <nav aria-label="Liens légaux">
         <ul class="flex flex-wrap gap-4 justify-center" role="list">
-          <li><a href="#" class="hover:text-white transition-colors">Mentions légales</a></li>
-          <li><a href="#" class="hover:text-white transition-colors">Politique de confidentialité</a></li>
-          <li><a href="#" class="hover:text-white transition-colors">RGPD</a></li>
-          <li><a href="#" class="hover:text-white transition-colors">Accessibilité</a></li>
+          <li><a href="/mentions-legales" class="hover:text-white transition-colors">Mentions légales</a></li>
+          <li><a href="/confidentialite" class="hover:text-white transition-colors">Politique de confidentialité</a></li>
+          <li><a href="/confidentialite" class="hover:text-white transition-colors">RGPD</a></li>
+          <li><a href="/accessibilite" class="hover:text-white transition-colors">Accessibilité</a></li>
         </ul>
       </nav>
     </div>

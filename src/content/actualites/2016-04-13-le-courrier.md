@@ -3,7 +3,7 @@ title: "Le courrier"
 date: "2016-04-13"
 description: "Sommaire   -   Agence postale de Gougenheim -   Bureau de poste de Truchtershe -   La Poste vous informe   [](/Le-courrieroutilsommaire \"Sommaire\")Agence postale de Gougenheim 2 place de la libération (Mairie), 67270 Gougenheim   tél : 03 88 71 13 58   courriel : apc. gougenheim@"
 categorie: "Vie pratique"
-image: "/images/uploads/3vignette-2-2f0b9.jpg"
+image: "/images/uploads/actualites/3vignette-2-2f0b9.jpg"
 source_url: "https://www.kienheim.fr/Le-courrier"
 ---
 
@@ -105,4 +105,4 @@ X
 
 ##  [](/Le-courrier#outil_sommaire "Sommaire")La Poste vous informe
 
-[![](/images/3vignette-2-2f0b9.jpg)](IMG/pdf/poste-2.pdf "PDF - 1.6 Mio")
+[![](/images/uploads/actualites/3vignette-2-2f0b9.jpg)](IMG/pdf/poste-2.pdf "PDF - 1.6 Mio")

@@ -6,7 +6,7 @@ categorie: "Arrêté municipal"
 source_url: "https://www.kienheim.fr/Arrete-no-16-2022-portant-nomination-d-un-agent-recenseur-du-recensement-de-la"
 ---
 
-[![](/images/pdf-b8aed.svg)](IMG/pdf/20221206154742445.pdf "PDF - 393.6 kio")
+[![](/images/uploads/actualites/pdf-b8aed.svg)](IMG/pdf/20221206154742445.pdf "PDF - 393.6 kio")
 
 **Arrêté (nÂ° 16/2022)**
 

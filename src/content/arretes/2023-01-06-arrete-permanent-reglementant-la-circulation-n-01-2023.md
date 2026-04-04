@@ -8,7 +8,7 @@ source_url: "https://www.kienheim.fr/Arrete-permanent-reglementant-la-circulatio
 
 Le 4 janvier 2023
 
-[![](/images/pdf-b8aed.svg)](IMG/pdf/arrete_01-2023.pdf "PDF - 465.6 kio")
+[![](/images/uploads/actualites/pdf-b8aed.svg)](IMG/pdf/arrete_01-2023.pdf "PDF - 465.6 kio")
 
 **Arrêté permanent nÂ° 01/2023**
 

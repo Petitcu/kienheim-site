@@ -3,7 +3,7 @@ title: "Concert du 11 décembre 2016 à l’église de Kienheim au profit de Dam
 date: "2017-01-01"
 description: "Source : les Dernières Nouvelles d’Alsace du 16/12/2016 par J. K."
 categorie: "Vie associative"
-image: "/images/uploads/concert_2016-12-11abis-53b47.jpg"
+image: "/images/uploads/actualites/concert_2016-12-11abis-53b47.jpg"
 source_url: "https://www.kienheim.fr/Concert-du-11-decembre-2016-a-l-eglise-de-Kienheim-au-profit-de-Damien-Handicap"
 ---
 
@@ -17,4 +17,4 @@ Les choristes ont débuté leur tour de chant par Cloches du soir puis le célè
 
 L’ambiance était au maximum, le public se régalait. Pour terminer sur une note magique, le chef de chÅ“ur a accompagné les choristes dans une belle chanson d’amour et de paix, la Colombe de Noël. "
 
-![](/images/concert_2016-12-11abis-53b47.jpg)
+![](/images/uploads/actualites/concert_2016-12-11abis-53b47.jpg)

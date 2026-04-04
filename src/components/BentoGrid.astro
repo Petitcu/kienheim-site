@@ -120,7 +120,7 @@ const fmtMon  = (d: Date) => d.toLocaleDateString('fr-FR', { month: 'short', yea
             <p class="text-sm mt-2" style="color: var(--c-muted);">Aucun événement prévu.</p>
           )}
         </div>
-        <a href="/evenements" class="mt-3 text-xs font-semibold hover:underline link-primary">
+        <a href="/vivre" class="mt-3 text-xs font-semibold hover:underline link-primary">
           Tous les événements →
         </a>
       </article>
@@ -249,15 +249,8 @@ const fmtMon  = (d: Date) => d.toLocaleDateString('fr-FR', { month: 'short', yea
             <p class="text-xs mt-1" style="color: var(--c-muted);">Bulletin municipal trimestriel</p>
           )}
         </div>
-        {lastBulletin ? (
+        {lastBulletin && (
           <a href={lastBulletin.data.fichier_pdf} class="btn-accent mt-3 self-start" target="_blank" rel="noopener">
-            <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-            </svg>
-            Télécharger
-          </a>
-        ) : (
-          <a href="#" class="btn-accent mt-3 self-start">
             <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
             </svg>

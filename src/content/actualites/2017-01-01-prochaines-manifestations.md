@@ -3,13 +3,13 @@ title: "Prochaines manifestations"
 date: "2017-01-01"
 description: "[](IMG/jpg/concert. jpg) Concert : Les notes de Rio ASCSDK Les bénévoles de l’ ASCSDK organisent une soirée-concerts avec, au programme : -   20h : Brisa Nova       Né de la rencontre entre quatre musiciens passionnés, Brisa Nova explore les sonorités chaleureuses et envoûtantes "
 categorie: "Agenda"
-image: "/images/uploads/le_frelon_a_pattes_jaunes-63e34-9aa91.jpg"
+image: "/images/uploads/actualites/le_frelon_a_pattes_jaunes-63e34-9aa91.jpg"
 source_url: "https://www.kienheim.fr/Prochaines-manifestations"
 ---
 
-![Le frelon à pattes jaunes dit « asiatique »](/images/le_frelon_a_pattes_jaunes-63e34-9aa91.jpg)
+![Le frelon à pattes jaunes dit « asiatique »](/images/uploads/actualites/le_frelon_a_pattes_jaunes-63e34-9aa91.jpg)
 
-[![](/images/concert-17db8.jpg)](IMG/jpg/concert.jpg)
+[![](/images/uploads/actualites/concert-17db8.jpg)](IMG/jpg/concert.jpg)
 
 **Concert : Les notes de Rio**
 

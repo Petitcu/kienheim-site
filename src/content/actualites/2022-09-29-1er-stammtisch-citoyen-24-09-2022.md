@@ -13,7 +13,7 @@ Sommaire  
 -   [Table 2 - Activités ouvertes à](/1er-Stammtisch-citoyen-24-09-2022#outil_sommaire_1 "Table 2 - Activités ouvertes à tous")
 -   [Table 3 - Se réapproprier (…)](/1er-Stammtisch-citoyen-24-09-2022#outil_sommaire_2 "Table 3 - Se réapproprier les espaces communaux")
 
-[![](/images/pdf-b8aed.svg)](IMG/pdf/kienheim_flash_-_compte_rendu_du_stammtisch_du_24-09-2022_version_finale.pdf "PDF - 223.9 kio")
+[![](/images/uploads/actualites/pdf-b8aed.svg)](IMG/pdf/kienheim_flash_-_compte_rendu_du_stammtisch_du_24-09-2022_version_finale.pdf "PDF - 223.9 kio")
 
 **Restitution du 1er stammtisch citoyen**
 
@@ -30,7 +30,7 @@ Commune de Kienheim
 
 ##  [](/1er-Stammtisch-citoyen-24-09-2022#outil_sommaire "Sommaire")Table 1 - Noël à Kienheim
 
-[![](/images/20211120_122226-50864.jpg)](IMG/jpg/20211120_122226.jpg)
+[![](/images/uploads/actualites/20211120_122226-50864.jpg)](IMG/jpg/20211120_122226.jpg)
 
 **Décoration de NoÃ« l 2021**
 
@@ -65,19 +65,19 @@ Enfin et pour prévoir un lieu de rencontre intergénérationnel, il a été sug
 
 ##  [](/1er-Stammtisch-citoyen-24-09-2022#outil_sommaire "Sommaire")Table 3 - Se réapproprier les espaces communaux
 
-![](/images/20220922_huneberg-500px-9c88c.jpg)
+![](/images/uploads/actualites/20220922_huneberg-500px-9c88c.jpg)
 
 **Parc du Huneberg - Air de jeux**
 
 Commune de Kienheim
 
-![](/images/20220922_huneberg2-500px-41a68.jpg)
+![](/images/uploads/actualites/20220922_huneberg2-500px-41a68.jpg)
 
 **Parc du Huneberg**
 
 Commune de Kienheim
 
-![](/images/20220922_huneberg3-500px-6afe2.jpg)
+![](/images/uploads/actualites/20220922_huneberg3-500px-6afe2.jpg)
 
 **Parc du Huneberg**
 
@@ -85,13 +85,13 @@ Commune de Kienheim
 
 Sur le **parc du Hüneberg**, le terrain de pétanque pourrait être nettoyé pour avoir de meilleures conditions de jeu. Le terrain de football pourrait être conservé. L’idée serait d’attirer les familles et les enfants d’âge 3-12 ans. Il faudrait retirer au niveau des jeux, la clôture avec le bac à sable. Il serait nécessaire d’ajouter des tables et des bancs dans ce parc pour que tous les âges puissent profiter du parc en famille. Une cabane à livres, spécifique aux livres pour la jeunesse, pourrait y être installée. Du fait du terrain vallonné, une proposition de circuit de VTT est faite. Proposition est faite à moyen terme d’installer une tyrolienne sur la partie droite, dans la grande pente. Le terrain et le dénivelé s’y prêtent parfaitement. C’est une activité fédératrice.
 
-![](/images/2022_-_jardincure1-65375.jpg)
+![](/images/uploads/actualites/2022_-_jardincure1-65375.jpg)
 
 **Jardin du curé**
 
 Commune de Kienheim
 
-![](/images/cura_c_2-52e8f.png)
+![](/images/uploads/actualites/cura_c_2-52e8f.png)
 
 **Jardin du curé**
 
@@ -99,7 +99,7 @@ Commune de Kienheim
 
 Le **jardin du curé** (jardin entre le périscolaire et la mairie) serait à transformer. Nous pourrions ajouter à cet endroit une cabane à livres (fabriquée en bois, en accès libre pour tous les âges). Pour que les villageois, petits et grands puissent profiter de cet espace, il serait nécessaire d’ajouter 2 bancs.
 
-![](/images/20220922_banc_vignette-b608d.jpg)
+![](/images/uploads/actualites/20220922_banc_vignette-b608d.jpg)
 
 **Banc communale décoré par des citoyens**
 
@@ -107,7 +107,7 @@ Commune de Kienheim
 
 La question de la gestion des livres dans cette cabane à livres est posée et les avis divergent. Le principe d’utilisation dans d’autres communes reste celui de l’accès libre. Un « tri » pourrait être fait de manière régulière. Il n’y a pas forcément besoin que cette veille soit journalière, ni hebdomadaire. Pour décorer cette cabane à livres, des motifs dans le bois pourraient être taillés, ou peints dessus. Pourquoi pas mettre à l’honneur les différents cÅ“urs de métiers des agriculteurs du village.
 
-![](/images/2022_-_verger_ecole-f9fd6.jpg)
+![](/images/uploads/actualites/2022_-_verger_ecole-f9fd6.jpg)
 
 **Verger école**
 
@@ -115,7 +115,7 @@ Commune de Kienheim
 
 Un autre espace communal, peu connu de tous, existe et pourrait constituer un lieu d’atelier : l**e verger école**. Il est situé dans les champs derrière l’école, au-dessus de l’accueil périscolaire. Le verger école pourrait être le lieu d’un atelier de taille à court ou moyen terme.
 
-![](/images/20220910_carrefour_eglise-250px-8590b.jpg)
+![](/images/uploads/actualites/20220910_carrefour_eglise-250px-8590b.jpg)
 
 **Carrefour de l’église**
 
@@ -124,7 +124,7 @@ Commune de Kienheim
 La décoration du c**arrefour de l’église** est pour l’instant composée de buissons bas (buis). Elle manque de couleurs et d’éléments plus hauts. Peut-être faudrait-il à **moyen terme** retirer quelques buis pour y planter des espèces plus larges et colorées, voire installer des décorations pérennes (céramiques…).  
 De manière générale, nous constatons une volonté de faire vivre les décorations du village de manière saisonnière mais raisonnée en termes de plantations.
 
-![](/images/20220922_fitness-5d75e.jpg)
+![](/images/uploads/actualites/20220922_fitness-5d75e.jpg)
 
 **Aire de Fitness**
 
@@ -139,11 +139,11 @@ La communication a été d’ailleurs questionnée lors de cette soirée de Stam
 -   _Kienheim’Flash_ : bulletin d’information municipale, dans les boîtes aux lettres
 -   Intramuros :
     
-    [![](/images/store_ios-890fa.png)](https://apps.apple.com/fr/app/intramuros-info-du-territoire/id1312850573)
+    [![](/images/uploads/actualites/store_ios-890fa.png)](https://apps.apple.com/fr/app/intramuros-info-du-territoire/id1312850573)
     
     [https://apps.apple.com/fr/app/intramuros-info-du-territoire/id1312850573](https://apps.apple.com/fr/app/intramuros-info-du-territoire/id1312850573)
     
-    [![](/images/store_android-ec3c3.png)](https://play.google.com/store/apps/details?id=com.intramuros.Intramuros.production)
+    [![](/images/uploads/actualites/store_android-ec3c3.png)](https://play.google.com/store/apps/details?id=com.intramuros.Intramuros.production)
     
     [https://play.google.com/store/apps/details?id=com.intramuros.Intramuros.production](https://play.google.com/store/apps/details?id=com.intramuros.Intramuros.production)
     
@@ -154,7 +154,7 @@ _Lucie Dierstein, Présidente de la commission Animation de Kienheim._
 
 ### Portfolio
 
--   [![Restitution du 1er stammtisch citoyen](/images/1ec5ac7209f85994709b1e16739c98.jpg)](IMG/jpg/20220924_193613-1000px.jpg "Restitution du 1er stammtisch citoyen")
--   [![Restitution du 1er stammtisch citoyen](/images/09c5a5d1d757a8d67293d551a9fb72.jpg)](IMG/jpg/20220924_193637-1000px.jpg "Restitution du 1er stammtisch citoyen")
--   [![Restitution du 1er stammtisch citoyen](/images/442ec5a1fd795ddd5e446ac366f845.jpg)](IMG/jpg/20220924_193643-1000px.jpg "Restitution du 1er stammtisch citoyen")
--   [![](/images/1dad2baf4eb1f0b22b2dc24f812865.jpg)](IMG/jpg/20220924_193942-modifia_c_e-1000px.jpg)
+-   [![Restitution du 1er stammtisch citoyen](/images/uploads/actualites/1ec5ac7209f85994709b1e16739c98.jpg)](IMG/jpg/20220924_193613-1000px.jpg "Restitution du 1er stammtisch citoyen")
+-   [![Restitution du 1er stammtisch citoyen](/images/uploads/actualites/09c5a5d1d757a8d67293d551a9fb72.jpg)](IMG/jpg/20220924_193637-1000px.jpg "Restitution du 1er stammtisch citoyen")
+-   [![Restitution du 1er stammtisch citoyen](/images/uploads/actualites/442ec5a1fd795ddd5e446ac366f845.jpg)](IMG/jpg/20220924_193643-1000px.jpg "Restitution du 1er stammtisch citoyen")
+-   [![](/images/uploads/actualites/1dad2baf4eb1f0b22b2dc24f812865.jpg)](IMG/jpg/20220924_193942-modifia_c_e-1000px.jpg)

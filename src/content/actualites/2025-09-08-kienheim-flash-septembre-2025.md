@@ -3,11 +3,11 @@ title: "Kienheim’Flash - septembre 2025"
 date: "2025-09-08"
 description: "[](IMG/pdf/kienheimflashsept2025. pdf \"Cliquer pour télécharger le fichier\") Veuillez trouver ci-dessous quelques rappels :  Chiens en liberté et déjections canines Nous avons constaté qu’il y a toujours des chiens qui divaguent dans le village et dans les champs ; nous vous rapp"
 categorie: "Kienheim Flash"
-image: "/images/uploads/bandeau_sept_2025-a6f37-3d7c0.jpg"
+image: "/images/uploads/actualites/bandeau_sept_2025-a6f37-3d7c0.jpg"
 source_url: "https://www.kienheim.fr/Kienheim-Flash-septembre-2025"
 ---
 
-[![Cliquer pour télécharger le fichier](/images/bandeau_sept_2025-a6f37-3d7c0.jpg)](IMG/pdf/kienheim_flash_sept_2025.pdf "Cliquer pour télécharger le fichier")
+[![Cliquer pour télécharger le fichier](/images/uploads/actualites/bandeau_sept_2025-a6f37-3d7c0.jpg)](IMG/pdf/kienheim_flash_sept_2025.pdf "Cliquer pour télécharger le fichier")
 
 Veuillez trouver ci-dessous quelques rappels :
 
@@ -38,7 +38,7 @@ Pour la sécurité des enfants allant à l’école, merci de ne pas stationner 
 
 #### [Déclaration préalable (anciennement déclaration de travaux](#_foo)
 
-Nous vous rappelons qu’une déclaration préalable (CERFA à utiliser : n° [16702\*01](https://www.service-public.fr/particuliers/vosdroits/R11646)) est obligatoire, notamment dans les cas suivants :
+Nous vous rappelons qu’une déclaration préalable (CERFA à utiliser : n° [16702\*01](https://www.service-public.gouv.fr/particuliers/vosdroits/R11646)) est obligatoire, notamment dans les cas suivants :
 
 -   construction nouvelle (garage, dépendance, carport, abri de jardin ...) ou travaux sur une construction existante ayant pour résultat la création d’une surface de plancher ou d’une emprise au sol comprise entre 5 et 20 m2. Pour ces derniers, ce seuil est porté à 40 m2 si la construction est située dans une zone urbaine couverte par un POS- PLU ou PLUi,
 -   construction d’un mur d’une hauteur au-dessus du sol supérieure ou égale à 2 m,

@@ -3,7 +3,7 @@ title: "Retour du 4L Trophy 2017"
 date: "2017-03-22"
 description: "Retour de ce fameux raid...  Au total, notre équipage a parcouru 8500 km avec notre précieuse 4L."
 categorie: "Jeunesse"
-image: "/images/uploads/4da658a23379a04e242f60901d7ffd.jpg"
+image: "/images/uploads/actualites/4da658a23379a04e242f60901d7ffd.jpg"
 source_url: "https://www.kienheim.fr/Retour-du-4L-Trophy-2017"
 ---
 
@@ -24,7 +24,7 @@ et son coéquipier Jack Missimilly
 
 ### Portfolio
 
--   [![](/images/4da658a23379a04e242f60901d7ffd.jpg)](IMG/jpg/36506653bis.jpg)
--   [![](/images/f97e4fc40988e2dabec381541e17a9.jpg)](IMG/jpg/36506650bis.jpg)
--   [![](/images/99478eec65d5a5c4f1bc1211cad49b.jpg)](IMG/jpg/36500972bis.jpg)
--   [![](/images/d85018b92ac3949a7b882d93ee05c1.jpg)](IMG/jpg/36487616bis.jpg)
+-   [![](/images/uploads/actualites/4da658a23379a04e242f60901d7ffd.jpg)](IMG/jpg/36506653bis.jpg)
+-   [![](/images/uploads/actualites/f97e4fc40988e2dabec381541e17a9.jpg)](IMG/jpg/36506650bis.jpg)
+-   [![](/images/uploads/actualites/99478eec65d5a5c4f1bc1211cad49b.jpg)](IMG/jpg/36500972bis.jpg)
+-   [![](/images/uploads/actualites/d85018b92ac3949a7b882d93ee05c1.jpg)](IMG/jpg/36487616bis.jpg)

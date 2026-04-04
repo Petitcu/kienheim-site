@@ -1,0 +1,33 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+---
+<Layout title="Accessibilité — Kienheim" description="Déclaration d'accessibilité du site officiel de la commune de Kienheim.">
+  <Navbar />
+  <main id="main-content" class="max-w-3xl mx-auto px-4 sm:px-6 py-16 sm:py-24">
+    <a href="/" class="inline-flex items-center gap-2 text-sm font-semibold mb-8 link-primary" onclick="if(history.length > 1){ history.back(); return false; }">
+      <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+      </svg>
+      Retour
+    </a>
+    <h1 class="text-3xl sm:text-4xl font-black mb-6" style="color: var(--c-primary);">Accessibilité</h1>
+    <div class="space-y-6" style="color: var(--c-muted);">
+      <p>La commune de Kienheim s'engage à rendre son site internet accessible conformément à l'article 47 de la loi n°2005-102 du 11 février 2005 et au RGAA (Référentiel Général d'Amélioration de l'Accessibilité).</p>
+      <section>
+        <h2 class="text-xl font-bold mb-2" style="color: var(--c-primary);">État de conformité</h2>
+        <p>Ce site est partiellement conforme aux normes WCAG 2.1 niveau AA. Un audit complet est en cours de réalisation.</p>
+      </section>
+      <section>
+        <h2 class="text-xl font-bold mb-2" style="color: var(--c-primary);">Signaler un problème</h2>
+        <p>Si vous rencontrez un obstacle à l'accessibilité, contactez-nous :<br />
+          <a href="mailto:contact@kienheim.fr" class="link-primary">contact@kienheim.fr</a><br />
+          Mairie de Kienheim — 6 rue de l'Église, 67270 Kienheim
+        </p>
+      </section>
+      <p class="text-sm italic">Déclaration à compléter par la mairie.</p>
+    </div>
+  </main>
+  <Footer />
+</Layout>

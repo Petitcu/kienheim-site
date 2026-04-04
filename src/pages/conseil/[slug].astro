@@ -1,26 +1,29 @@
 ---
 import { getCollection } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/Navbar.astro';
+import Footer from '../../components/Footer.astro';
 
 export async function getStaticPaths() {
-  const arretes = await getCollection('arretes');
-  return arretes.map((arrete) => ({
-    params: { slug: arrete.slug },
-    props: { arrete },
+  const seances = await getCollection('conseil');
+  return seances.map((seance) => ({
+    params: { slug: seance.slug },
+    props: { seance },
   }));
 }
 
-const { arrete } = Astro.props;
-const { Content } = await arrete.render();
+const { seance } = Astro.props;
+const { Content } = await seance.render();
 
 const fmtDate = (d: Date) =>
   d.toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' });
 ---
 
-<Layout title={`${arrete.data.title} — Mairie de Kienheim`} description={arrete.data.description ?? arrete.data.title}>
+<Layout title={`${seance.data.title} — Conseil municipal de Kienheim`} description={seance.data.title}>
+  <Navbar />
   <main id="main-content" class="max-w-3xl mx-auto px-4 sm:px-6 py-16 sm:py-24">
 
-    <a href="/mairie" class="inline-flex items-center gap-2 text-sm font-semibold mb-8 link-primary" onclick="if(history.length > 1){ history.back(); return false; }">
+    <a href="/mairie#comptes-rendus" class="inline-flex items-center gap-2 text-sm font-semibold mb-8 link-primary" onclick="if(history.length > 1){ history.back(); return false; }">
       <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
         <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
       </svg>
@@ -28,19 +31,19 @@ const fmtDate = (d: Date) =>
     </a>
 
     <div class="flex items-center gap-3 mb-4">
-      <span class="badge-secondary">{arrete.data.categorie ?? 'Arrêté municipal'}</span>
-      <time class="text-sm" style="color: var(--c-muted);" datetime={arrete.data.date.toISOString()}>
-        {fmtDate(arrete.data.date)}
+      <span class="badge-secondary">Compte-rendu</span>
+      <time class="text-sm" style="color: var(--c-muted);" datetime={seance.data.date.toISOString()}>
+        {fmtDate(seance.data.date)}
       </time>
     </div>
 
     <h1 class="text-3xl sm:text-4xl font-black mb-6 leading-tight" style="color: var(--c-primary);">
-      {arrete.data.title}
+      {seance.data.title}
     </h1>
 
-    {arrete.data.document_pdf && (
+    {seance.data.document_pdf && (
       <a
-        href={arrete.data.document_pdf}
+        href={seance.data.document_pdf}
         class="btn-accent mb-8 inline-flex"
         target="_blank"
         rel="noopener"
@@ -48,7 +51,7 @@ const fmtDate = (d: Date) =>
         <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
           <path stroke-linecap="round" stroke-linejoin="round" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
         </svg>
-        Télécharger le document PDF
+        Télécharger le compte-rendu PDF
       </a>
     )}
 
@@ -57,6 +60,7 @@ const fmtDate = (d: Date) =>
     </div>
 
   </main>
+  <Footer />
 </Layout>
 
 <style>

@@ -12,7 +12,7 @@ Sommaire  
 -   [Rapport des commissions](/Conseil-municipal-du-23-janvier-2026#outil_sommaire_2 "Rapport des commissions")
 -   [DIVERS](/Conseil-municipal-du-23-janvier-2026#outil_sommaire_3 "DIVERS")
 
-[![Compte-rendu du conseil municipal](/images/pdf-b8aed.svg)](IMG/pdf/cr_du_cm_du_23_janvier_2026.pdf "Compte-rendu du conseil municipal")
+[![Compte-rendu du conseil municipal](/images/uploads/actualites/pdf-b8aed.svg)](IMG/pdf/cr_du_cm_du_23_janvier_2026.pdf "Compte-rendu du conseil municipal")
 
 **Compte-rendu du conseil municipal**
 

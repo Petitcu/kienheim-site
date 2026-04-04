@@ -1,0 +1,37 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+---
+<Layout title="Mentions légales — Kienheim" description="Mentions légales du site officiel de la commune de Kienheim.">
+  <Navbar />
+  <main id="main-content" class="max-w-3xl mx-auto px-4 sm:px-6 py-16 sm:py-24">
+    <a href="/" class="inline-flex items-center gap-2 text-sm font-semibold mb-8 link-primary" onclick="if(history.length > 1){ history.back(); return false; }">
+      <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+      </svg>
+      Retour
+    </a>
+    <h1 class="text-3xl sm:text-4xl font-black mb-6" style="color: var(--c-primary);">Mentions légales</h1>
+    <div class="prose max-w-none space-y-6" style="color: var(--c-fg);">
+      <section>
+        <h2 class="text-xl font-bold mb-2" style="color: var(--c-primary);">Éditeur du site</h2>
+        <p style="color: var(--c-muted);">Commune de Kienheim<br />6 rue de l'Église, 67270 Kienheim<br />Tél. : 03 88 XX XX XX<br />Email : contact@kienheim.fr</p>
+      </section>
+      <section>
+        <h2 class="text-xl font-bold mb-2" style="color: var(--c-primary);">Responsable de publication</h2>
+        <p style="color: var(--c-muted);">Le Maire de la commune de Kienheim.</p>
+      </section>
+      <section>
+        <h2 class="text-xl font-bold mb-2" style="color: var(--c-primary);">Hébergement</h2>
+        <p style="color: var(--c-muted);">Ce site est hébergé par Netlify, Inc. — 512 2nd Street, Ste 200, San Francisco, CA 94107, États-Unis.</p>
+      </section>
+      <section>
+        <h2 class="text-xl font-bold mb-2" style="color: var(--c-primary);">Propriété intellectuelle</h2>
+        <p style="color: var(--c-muted);">L'ensemble du contenu de ce site (textes, images, illustrations) est la propriété de la commune de Kienheim, sauf mention contraire. Toute reproduction est soumise à autorisation préalable.</p>
+      </section>
+      <p class="text-sm italic" style="color: var(--c-muted);">Contenu à compléter par la mairie.</p>
+    </div>
+  </main>
+  <Footer />
+</Layout>

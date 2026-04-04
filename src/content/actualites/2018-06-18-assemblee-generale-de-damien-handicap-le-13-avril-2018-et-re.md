@@ -3,7 +3,7 @@ title: "Assemblée Générale de Damien Handicap le 13 avril 2018 et remise de 1
 date: "2018-06-18"
 description: "Source : les Dernières Nouvelles d’Alsace du 3 mai 2018 par JK \" A l’issue de l’assemblée générale de l’association Damien Handicap, la présidente Fabienne Arenz et son équipe de bénévoles ont remis cinq chèques d’un montant total de 10 070 € à des personnes souffrant d’un handic"
 categorie: "Vie associative"
-image: "/images/uploads/946ced39f09d2ca9c16a2ba2c5293f.jpg"
+image: "/images/uploads/actualites/946ced39f09d2ca9c16a2ba2c5293f.jpg"
 source_url: "https://www.kienheim.fr/Assemblee-Generale-de-Damien-Handicap-le-13-avril-2018-et-remise-de-10-070-EUR"
 ---
 
@@ -23,8 +23,8 @@ Pour contribuer à rendre la vie quotidienne d’enfants ou d’adultes handicap
 
 ### Portfolio
 
--   [![](/images/946ced39f09d2ca9c16a2ba2c5293f.jpg)](IMG/jpg/ag2018.1.jpg)
--   [![](/images/60a35935be2eb8424545fe42f0a448.jpg)](IMG/jpg/ag2018.2.jpg)
--   [![](/images/17584fd8cd82b853956e842b347041.jpg)](IMG/jpg/ag2018.3.jpg)
--   [![](/images/eb9eec075bc78c54ca275a8b664b39.jpg)](IMG/jpg/ag2018.4.jpg)
--   [![](/images/989cd1da00a0515661d083fe3fc4ec.jpg)](IMG/jpg/ag2018.jpg)
+-   [![](/images/uploads/actualites/946ced39f09d2ca9c16a2ba2c5293f.jpg)](IMG/jpg/ag2018.1.jpg)
+-   [![](/images/uploads/actualites/60a35935be2eb8424545fe42f0a448.jpg)](IMG/jpg/ag2018.2.jpg)
+-   [![](/images/uploads/actualites/17584fd8cd82b853956e842b347041.jpg)](IMG/jpg/ag2018.3.jpg)
+-   [![](/images/uploads/actualites/eb9eec075bc78c54ca275a8b664b39.jpg)](IMG/jpg/ag2018.4.jpg)
+-   [![](/images/uploads/actualites/989cd1da00a0515661d083fe3fc4ec.jpg)](IMG/jpg/ag2018.jpg)

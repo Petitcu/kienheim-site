@@ -3,7 +3,7 @@ title: "Deux dons effectués par l’Association Damien Handicap"
 date: "2016-03-05"
 description: "Source : les Dernières Nouvelles d’Alsace du 29/01/2016 par J. K."
 categorie: "Vie associative"
-image: "/images/uploads/damien_handicap_2016-01A-aba82.jpg"
+image: "/images/uploads/actualites/damien_handicap_2016-01A-aba82.jpg"
 source_url: "https://www.kienheim.fr/Deux-dons-effectues-par-l"
 ---
 
@@ -29,6 +29,6 @@ Fabienne Arenz a également remis 300 € à Épiphanie, maman de Naylan, 2 ans 
 
 Ã€ l’issue de la cérémonie, on a partagé le verre de l’amitié. "
 
-![](/images/damien_handicap_2016-01A-aba82.jpg)
+![](/images/uploads/actualites/damien_handicap_2016-01A-aba82.jpg)
 
-![](/images/damien_handicap_2016-01B-481f8.jpg)
+![](/images/uploads/actualites/damien_handicap_2016-01B-481f8.jpg)

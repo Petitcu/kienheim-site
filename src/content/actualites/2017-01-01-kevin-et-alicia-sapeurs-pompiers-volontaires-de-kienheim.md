@@ -3,7 +3,7 @@ title: "Kevin et Alicia, sapeurs-pompiers volontaires de Kienheim"
 date: "2017-01-01"
 description: "Bonjours à toutes et tous, Le Sapeur-Pompier volontaire prend l’engagement de se mettre au service de la population.  Il exerce les mêmes activités que le Sapeur-Pompier Professionnel."
 categorie: "Jeunesse"
-image: "/images/uploads/pompier_kevin_fussler_2017-e2a9a.jpg"
+image: "/images/uploads/actualites/pompier_kevin_fussler_2017-e2a9a.jpg"
 source_url: "https://www.kienheim.fr/Kevin-et-Alicia-sapeurs-pompiers-volontaires-de-Kienheim"
 ---
 
@@ -11,7 +11,7 @@ Bonjours à toutes et tous,
 
 Le Sapeur-Pompier volontaire prend l’engagement de se mettre au service de la population. Il exerce les mêmes activités que le Sapeur-Pompier Professionnel. Parallèlement à son activité professionnelle ou à ses études, il contribue aux missions de sécurité civile de toute nature confiées au SDIS.
 
-[![](/images/pompier_kevin_fussler_2017-e2a9a.jpg)](IMG/jpg/pompier_kevin_fussler_2017.jpg)
+[![](/images/uploads/actualites/pompier_kevin_fussler_2017-e2a9a.jpg)](IMG/jpg/pompier_kevin_fussler_2017.jpg)
 
 **Pompier Kévin FUSSLER**
 
@@ -21,7 +21,7 @@ J’ai choisi cette voie car aider les personnes est ma vocation. J’ai toujour
 
 Par la suite, j’ai bénéficié d’une formation initiale d’aptitude (FIA) réduite à deux jours : j’y ai appris la rigueur, l’esprit d’équipe, le fair-play et le respect. Depuis le 1er septembre 2017, je suis sapeur-pompier volontaire à Schnersheim. Plus tard je souhaite être pompier professionnel dans le GRIMP (groupe d’intervention en milieu périlleux).
 
-[![](/images/pompier_alicia_mey_2017-968d3.jpg)](IMG/jpg/pompier_alicia_mey_2017.jpg)
+[![](/images/uploads/actualites/pompier_alicia_mey_2017-968d3.jpg)](IMG/jpg/pompier_alicia_mey_2017.jpg)
 
 **Pompier Alicia MEY**
 
